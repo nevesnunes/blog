@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<div class="home">
+    {% for post in site.posts %}
+        {% assign phrases = post.content | 
+            markdownify | 
+            replace: '</h1>', ': ' |
+            replace: '</h2>', ': ' |
+            replace: '</h3>', ': ' |
+            replace: '</h4>', ': ' |
+            replace: '</h5>', ': ' |
+            replace: '</h6>', ': ' |
+            strip_html | 
+            split: '.' %}
+        {% assign content = phrases[0] | 
+            append: '.' | 
+            append: phrases[1] | 
+            append: '...' %}
+        <h2>
+            {% if post.title %}
+                <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+            {% endif %}
+        </h2>
+        {% include post-metadata.html %}
+        <div class="entry-content">{{ content }}</div>
+    {% endfor %}
+</div>

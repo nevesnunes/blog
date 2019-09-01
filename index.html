@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<div class="home">  
+    {% for post in paginator.posts %}
+        <header class="post-header">
+            {% if post.title %}
+            <h1 class="post-title">{{ post.title }}</h1>
+            {% else %}
+            <h1 class="post-title">{{ page.title }}</h1>
+            {% endif %}
+
+            {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+            <p class="post-meta">{{ post.date | date: date_format }}<p/>
+
+            <div class="post-tags">
+              {% if post %}
+                  {% assign tags = post.tags %}
+              {% else %}
+                  {% assign tags = page.tags %}
+              {% endif %}
+              {% assign hasTags = tags | size %}
+              {% if hasTags > 0 %}
+                  <span>Tags:&nbsp;</span>
+              {% endif %}
+              {% for tag in tags %}
+                  <a href="{{site.baseurl}}/tags/#{{tag|slugize}}">{{tag}}</a>
+                  {% unless forloop.last %}&nbsp;{% endunless %}
+              {% endfor %}
+            </div>
+        </header>
+        <div class="entry-content">{{ post.content }}</div>
+        <div class="c-before"/>
+    {% endfor %}
+
+    {% if paginator.total_pages > 1 %}
+        <div class="pagination">
+            <p class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</p>
+            {% if paginator.previous_page %}
+                <a href="{{ paginator.previous_page_path }}" class="previous">Previous</a>
+            {% else %}
+                <span class="previous">Previous</span>
+            {% endif %}
+            {% if paginator.next_page %}
+                <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+            {% else %}
+                <span class="next ">Next</span>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

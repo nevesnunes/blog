@@ -35,7 +35,7 @@ The candidate encodings vim tries to apply can be checked with `:set fileencodin
 Gedit tried to fallback to the system locale (UTF-8):
 
 <div class="c-container-center">
-    <img src="{{site.url}}/assets/img/gedit.png" alt="Gedit error"/>
+    <img src="{{site.url}}{{site.baseurl}}/assets/img/gedit.png" alt="Gedit error"/>
 </div>
 
 We can make out these patterns:

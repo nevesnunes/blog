@@ -52,7 +52,7 @@ Database clients were also complaining about network issues:
 DBeaver:
 
 <div class="c-container-center">
-    <img src="{{site.url}}/assets/img/dbeaver.png" alt="DBeaver error"/>
+    <img src="{{site.url}}{{site.baseurl}}/assets/img/dbeaver.png" alt="DBeaver error"/>
 </div>
 
 SQLcl:

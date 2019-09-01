@@ -18,14 +18,15 @@ timestamps/%.timestamp: $(assets-obj)
 		$* && \
 	touch $@
 
-gem_dir := $(shell realpath ~/.gem)
-gem_bin_dir := $(shell find ~/.gem -path '*/bin' ! -path '*/gems/*')
+gem_dir := $(shell realpath ~/.gem)/jekyll-local
+gem_bin_dir := $(shell find "$(gem_dir)" -path '*/bin' ! -path '*/gems/*')
 jekyll-obj := \
 	$(gem_bin_dir)/jekyll \
 	$(gem_bin_dir)/kramdown \
 	$(gem_bin_dir)/rougify
 $(jekyll-obj):
-	bundle install --path=$(gem_dir)
+	mkdir -p $(gem_dir)
+	env BUNDLE_GEMFILE=Gemfile.local bundle install --path=$(gem_dir)
 es5-shim := assets/js/es5-shim
 es5-shim-obj := $(es5-shim).js $(es5-shim).map
 $(es5-shim-obj):
@@ -40,7 +41,7 @@ $(lunr-obj):
 dependencies: $(jekyll-obj) $(es5-shim-obj) $(lunr-obj) $(assets-timestamp-obj)
 
 all: dependencies
-	bundle exec jekyll serve
+	env BUNDLE_GEMFILE=Gemfile.local bundle exec jekyll serve
 
 .DEFAULT_GOAL := all
 .PHONY: all dependencies

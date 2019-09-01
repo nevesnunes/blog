@@ -54,6 +54,8 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
 
+timezone: Europe/London
+
 custom_tag_description:
   fluff:
     description: Off-topic

@@ -20,7 +20,7 @@ layout: default
             append: '...' %}
         <h2>
             {% if post.title %}
-                <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+                <a href="{{ root_url }}{{ site.baseurl }}/{{ post.url }}">{{ post.title }}</a>
             {% endif %}
         </h2>
         {% include post-metadata.html %}

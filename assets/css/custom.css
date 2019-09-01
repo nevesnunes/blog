@@ -1,0 +1,191 @@
+.c-badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+.c-badge-big {
+    font-size: 100%;
+}
+
+.c-badge-info {
+    background-color: black;
+    color: white;
+}
+
+
+/* 
+ * References:
+ * http://colorbrewer2.org
+ * https://webaim.org/resources/contrastchecker/
+ */
+
+.c-badge-nok {
+    color: #fee8c8;
+    background-color: #c5321b;
+}
+
+.c-badge-ok {
+    color: #227c49;
+    background-color: #e5f5f9;
+}
+
+.c-badge-primary,
+.c-btn-primary {
+    background-color: #0000EE;
+    color: white;
+}
+
+.c-badge-primary:hover,
+.c-btn-primary:hover {
+    background-color: #000099;
+    border-color: #000066;
+    cursor: pointer;
+}
+
+.c-btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    line-height: 1;
+    border-radius: .25rem;
+}
+
+.c-container-center {
+    margin: 2em auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+.c-container-center img {
+    display: block;
+    margin: 0 auto;
+}
+
+.c-container-info {
+    color: #555;
+}
+
+.c-icon {
+    display: inline-block;
+    position: relative;
+    top: -0.15em;
+    width: 0.75em;
+    height: 0.75em;
+    margin-right: 0.25em;
+    line-height: 1;
+    vertical-align: middle;
+    fill: #aaa;
+}
+
+.c-indented-item {
+    padding-left: 2em;
+}
+
+.c-small {
+    max-width: 20em;
+}
+
+.c-indirectly-related {
+    border-left: 0.5rem solid white;
+    padding-left: 1rem;
+    margin: 1rem 0;
+}
+
+.c-indirectly-related ol,
+.c-indirectly-related ul,
+.c-indirectly-related .c-list-children> :not(ol):not(ul) {
+    margin-left: 15px;
+}
+
+.c-list-children> :not(ol):not(ul) {
+    margin-left: 30px;
+}
+
+.entry-content {
+    margin-bottom: 2em;
+}
+
+
+/* Overrides */
+
+.footnotes {
+    border-top: 0.25rem dashed white;
+    padding: 1rem 0;
+}
+
+.footnotes li>p {
+    margin-bottom: 0;
+}
+
+a.footnote:before {
+    content: "[";
+}
+
+a.footnote:after {
+    content: "]";
+}
+
+
+/* Avoid negative spacing, it can ruin the kerning of some fonts */
+
+blockquote {
+    letter-spacing: normal;
+}
+
+code {
+    font-size: 90%;
+}
+
+figcaption {
+    margin: 0.5em;
+}
+
+hr {
+    border: 0.25rem dashed white;
+    margin-bottom: 1rem;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+pre,
+code {
+    border: 0;
+    border-radius: 0.25rem;
+}
+
+
+/* Prefer consistent line heights */
+
+sup {
+    position: relative;
+    top: -0.25em;
+    vertical-align: top;
+}
+
+
+/* http://www.w3.org/TR/html5/rendering.html#phrasing-content-0 */
+
+a:link {
+    color: #0000EE;
+}
+
+a:visited {
+    color: #551A8B;
+}

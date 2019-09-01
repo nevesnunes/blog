@@ -1,0 +1,16 @@
+<p class="c-container-info">
+    {% if post %}
+        {% assign metadata = post %}
+    {% else %}
+        {% assign metadata = page %}
+    {% endif %}
+    {{ metadata.date | date_to_string }}
+    {% if metadata.tags %}
+        <br/>
+        Tags:
+        {% for tag in metadata.tags %}
+            <a href="{{ site.baseurl }}/tags/#{{ tag | slugize }}">
+                <span class="c-badge c-badge-primary">{{ tag }}</span></a>
+        {% endfor %}
+    {% endif %}
+</p>

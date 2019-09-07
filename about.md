@@ -18,6 +18,7 @@ Yak Shaving
 - [Lobsters \| What's your current yak-shaving depth?](https://lobste.rs/s/ngswph/what_s_your_current_yak_shaving_depth)
 - [blog_deploy_yak_shave.md](https://gist.github.com/trptcolin/3353806872d367819f0709c4607acbb8)
 - [Rabbit Holes: The Secret to Technical Expertise](http://blog.bityard.net/articles/2019/August/rabbit-holes-the-secret-to-technical-expertise.html)
+- [Everything I googled in a week as a professional software engineer](https://localghost.dev/2019/09/everything-i-googled-in-a-week-as-a-professional-software-engineer/)
 
 ## Source code
 

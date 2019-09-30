@@ -76,6 +76,13 @@
     margin: 0 auto;
 }
 
+.c-container-inline img {
+    display: inline-block;
+    min-width: 20rem;
+    padding-top: 1rem;
+    width: 45%;
+}
+
 .c-container-info {
     color: #555;
 }

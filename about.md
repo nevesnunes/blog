@@ -13,6 +13,10 @@ Oftentimes, errors are aggravated by unhelpful or misleading messages. We can ta
 CTF Writeups
 - [CTFtime.org \| Writeups](https://ctftime.org/writeups)
 - [GitHub \| CTFs](https://github.com/ctfs)
+- [IppSec \| HackTheBox Writeups](https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA)
+
+Data Analysis
+- [Analysing Petabytes of Websites](https://tech.marksblogg.com/petabytes-of-website-data-spark-emr.html)
 
 Yak Shaving
 - [Lobsters \| What's your current yak-shaving depth?](https://lobste.rs/s/ngswph/what_s_your_current_yak_shaving_depth)

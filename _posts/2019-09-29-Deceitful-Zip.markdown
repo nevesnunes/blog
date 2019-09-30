@@ -99,6 +99,7 @@ When comparing fields of this example zip with the invalid zip, some differences
 First bit: Last-block-in-stream marker:
     1: this is the last block in the stream.
     0: there are more blocks to process after this one.
+
 Second and third bits: Encoding method used for this block type:
     00: a stored/raw/literal section, between 0 and 65,535 bytes in length.
     01: a static Huffman compressed block, using a pre-agreed Huffman tree.

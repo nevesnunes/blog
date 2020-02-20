@@ -1,0 +1,22 @@
+body {
+    background-color: white;
+}
+
+header,
+.page-link,
+.site-title,
+.site-nav {
+    display: none;
+}
+
+pre, code {
+    border: 1px solid #ddd;
+}
+
+.c-indirectly-related {
+    border-left: 0.5rem solid #ddd;
+}
+
+.c-container-inline img {
+    max-width: 45%;
+}

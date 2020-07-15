@@ -1,7 +1,7 @@
 .c-badge {
     display: inline-block;
     padding: .25em .4em;
-    font-size: 75%;
+    font-size: 90%;
     font-weight: 700;
     line-height: 1;
     text-align: center;
@@ -164,6 +164,7 @@ blockquote {
     letter-spacing: normal;
 }
 
+.reversefootnote,
 code {
     font-size: 90%;
 }
@@ -182,9 +183,38 @@ pre {
 }
 
 pre,
-code {
+code,
+.highlight {
     border: 0;
     border-radius: 0.25rem;
+}
+
+.highlight table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.highlight td.code,
+.highlight td.gutter {
+    padding: 0;
+    vertical-align: top;
+    white-space: pre;
+}
+
+.highlight td.gutter {
+    color: #aaa;
+    text-align: right;
+    width: 3rem;
+}
+
+.highlight td pre {
+    margin: 0;
+}
+
+.highlight td.code pre,
+pre.highlight code {
+    overflow-x: auto;
+    white-space: pre;
 }
 
 

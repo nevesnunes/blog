@@ -5,7 +5,8 @@ body {
 header,
 .page-link,
 .site-title,
-.site-nav {
+.site-nav,
+.reversefootnote {
     display: none;
 }
 

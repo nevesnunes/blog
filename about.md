@@ -22,7 +22,7 @@ Data Analysis
 - [24\-core CPU and I can't move my mouse](https://randomascii.wordpress.com/2017/07/09/24-core-cpu-and-i-cant-move-my-mouse/)
 - [Analysing Petabytes of Websites](https://tech.marksblogg.com/petabytes-of-website-data-spark-emr.html)
 
-Systems programming
+Systems Programming
 - [Debugging memory corruption: who the hell writes “2” into my stack?! \- Unity Technologies Blog](https://blogs.unity3d.com/2016/04/25/debugging-memory-corruption-who-the-hell-writes-2-into-my-stack-2/)
 - [Tracking down a segfault in grep](https://blog.loadzero.com/blog/tracking-down-a-segfault-in-grep/)
 - [Debugging an evil Go runtime bug \- marcan\.st](https://marcan.st/2017/12/debugging-an-evil-go-runtime-bug/)

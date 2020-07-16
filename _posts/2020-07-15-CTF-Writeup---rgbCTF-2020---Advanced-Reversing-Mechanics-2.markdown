@@ -17,7 +17,7 @@ On this writeup, I'll show my [Z3 solution]({{ site.url }}{{ site.baseurl }}/ass
 
 # Description
 
-On this reversing challenge, we are given an [object file]({{ site.url }}{{ site.baseurl }}/assets/writeups/rgbCTF2020/arm_hard.o). If we supply it with the flag, it outputs this byte sequence:
+On this reversing challenge, we are given an [object file]({{ site.url }}{{ site.baseurl }}/assets/writeups/rgbCTF2020/arm_hard.o). If compiled into an executable and supplied with the flag, it should output this byte sequence:
 
 > 0A, FB, F4, 88, DD, 9D, 7D, 5F, 9E, A3, C6, BA, F5, 95, 5D, 88, 3B, E1, 31, 50, C7, FA, F5, 81, 99, C9, 7C, 23, A1, 91, 87, B5, B1, 95, E4,
 

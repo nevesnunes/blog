@@ -10,17 +10,17 @@ Oftentimes, errors are aggravated by unhelpful or misleading messages. We can ta
 
 ## Inspiration
 
-CTF Writeups
+Computer Security
 - [CTFtime.org \| Writeups](https://ctftime.org/writeups)
 - [GitHub \| CTFs](https://github.com/ctfs)
 - [IppSec \| HackTheBox Writeups](https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA)
-
-Crackmes
+- [34c3 CTF minbashmaxfun writeup](https://medium.com/@orik_/34c3-ctf-minbashmaxfun-writeup-4470b596df60)
 - [Solving warsaw&\#8217;s Java Crackme 3 &\#8211; ReWolf&\#039;s blog](http://blog.rewolf.pl/blog/?p=856)
+- [nullsecurity\.org/articles \- "crackmes\.one : noverify's GraxCode's Java CrackMe 1"](http://www.nullsecurity.org/article/crackmes_one_noverify_graxcode_java_crackme_1)
 
 Data Analysis
-- [Analysing Petabytes of Websites](https://tech.marksblogg.com/petabytes-of-website-data-spark-emr.html)
 - [24\-core CPU and I can't move my mouse](https://randomascii.wordpress.com/2017/07/09/24-core-cpu-and-i-cant-move-my-mouse/)
+- [Analysing Petabytes of Websites](https://tech.marksblogg.com/petabytes-of-website-data-spark-emr.html)
 
 Systems programming
 - [Debugging memory corruption: who the hell writes “2” into my stack?! \- Unity Technologies Blog](https://blogs.unity3d.com/2016/04/25/debugging-memory-corruption-who-the-hell-writes-2-into-my-stack-2/)

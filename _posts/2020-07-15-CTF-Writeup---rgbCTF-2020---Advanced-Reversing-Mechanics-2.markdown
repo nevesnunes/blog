@@ -2,7 +2,7 @@
 layout: post
 title: CTF Writeup - rgbCTF 2020 - Advanced Reversing Mechanics 2
 date: 2020-07-15 21:31:39 +0100
-tags: ctf reversing z3
+tags: ctf reversing constraint-solving z3
 ---
 
 {% include custom.html %}
@@ -98,20 +98,20 @@ Due to these properties, a manual bruteforce becomes feasible and solves the pro
 Let's start with our known properties: the output bytes and the flag values (usually a known prefix, in this case `rgbCTF{`, with ASCII values in the middle, ending with `}`).
 
 ```python
-bv = list(b'\x0A\xFB\xF4\x88\xDD\x9D\x7D\x5F\x9E\xA3\xC6\xBA\xF5\x95\x5D\x88\x3B\xE1\x31\x50\xC7\xFA\xF5\x81\x99\xC9\x7C\x23\xA1\x91\x87\xB5\xB1\x95\xE4')
-flag_len = len(bv)
+flag_encrypted = list(b'\x0A\xFB\xF4\x88\xDD\x9D\x7D\x5F\x9E\xA3\xC6\xBA\xF5\x95\x5D\x88\x3B\xE1\x31\x50\xC7\xFA\xF5\x81\x99\xC9\x7C\x23\xA1\x91\x87\xB5\xB1\x95\xE4')
+flag_len = len(flag_encrypted)
 
-b = [BitVec('b_{:04d}'.format(i), 32) for i in range(flag_len)]
+flag = [BitVec('flag_{:04d}'.format(i), 32) for i in range(flag_len)]
 for i, c in enumerate('rgbCTF{'):
-    s.add(b[i] == ord(c))
+    s.add(flag[i] == ord(c))
 for i in range(7, flag_len):
     # Ensure ASCII values
-    s.add(b[i] >= 32)
-    s.add(b[i] <= 127)
-s.add(b[-1] == ord('}'))
+    s.add(flag[i] >= 32)
+    s.add(flag[i] <= 127)
+s.add(flag[-1] == ord('}'))
 ```
 
-Our Z3 variables are bit vectors (`BitVec()`), contained in array `b`.
+Our Z3 variables are bit vectors (`BitVec()`) stored in an array. Each variable is named `flag_` plus a suffix given by the index.
 
 Next, we add the variables from the encryption function and some of the expressions.  The `bVar4` variable was renamed to clarify the role it plays as current character.
 
@@ -121,10 +121,10 @@ uVar3 = BitVec("uVar3", 32)
 uVar5 = BitVec("uVar5", 32)
 uVar6 = BitVec("uVar6", 32)
 for i in range(flag_len):
-    uVar5 = b[i]
+    uVar5 = flag[i]
     uVar3 = (uVar5 - 10) & 0xff
     uVar6 = uVar5
-    uVar6 = If(b[i] < 0x50, 
+    uVar6 = If(flag[i] < 0x50, 
                If(uVar3 > 0x50, 
                   (uVar5 + 0x46) & 0xff, 
                   uVar3), 
@@ -167,24 +167,24 @@ Rewritten as:
 
 ```python
 uVar6 = (uVar6 - 7 ^ 0x43) & 0xff;
-b[i] = (uVar6 << 6 | uVar6 >> 2) & 0xff
-s.add(b[i] == bv[i])
+flag[i] = (uVar6 << 6 | uVar6 >> 2) & 0xff
+s.add(flag[i] == flag_encrypted[i])
 ```
 
 Since we don't have the casts to `unsigned char`, we can add the clamping with `0xff`. If you miss this, the results will be wrong and no model will satisfy the constraints!
 
-At this point, all calculations were done for the current character, so we added the constraint with the known output value: `s.add(b[i] == bv[i])`.
+At this point, all calculations were done for the current character, so we added the constraint with the known output value: `s.add(flag[i] == flag_encrypted[i])`.
 
 Moving on:
 
 ```python
 if i+1 < flag_len:
-    bCurrentChar = b[i+1]
+    bCurrentChar = flag[i+1]
     uVar6 = (i+1) % 5
     bCurrentChar = (bCurrentChar << (-uVar6 & 7) | bCurrentChar >> (uVar6 & 0xff)) & 0xff
     if (uVar6 == 2):
         bCurrentChar = bCurrentChar - 1
-    b[i+1] = bCurrentChar
+    flag[i+1] = bCurrentChar
 ```
 
 The original comparison with the null byte checks if we are on the last loop iteration or not, which can be done by the equivalent check `i+1 < flag_len`. Any pointer arithmetic was ommited or rewritten with the loop index `i`, since it was only done to compute the current index (`(int)(pbVar2 + -(int)param_1)`) or advance to the next character (`pbVar1 = pbVar2`).

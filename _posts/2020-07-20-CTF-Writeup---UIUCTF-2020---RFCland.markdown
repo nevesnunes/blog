@@ -115,7 +115,7 @@ with launch_ipdb_on_exception():
 
 Notice how some base64 values seemed to be truncated, so I had to add some padding bytes (`parsed_data += '0'`) in order to decode them.
 
-I've looked at response messages as well, by counting each distinct type of message:
+I've looked at response messages as well, by counting each distinct type of message (the only variable in the template is the received length, which is filtered out):
 
 ```bash
 tshark \

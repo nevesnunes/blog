@@ -50,8 +50,8 @@ A condensed view for these conversations is selecting `Context Menu > Follow > T
     <img src="{{site.url}}{{site.baseurl}}/assets/writeups/UIUCTF2020/wireshark1.png" alt="tcp conversation"/>
 </div>
 
-1. Host 10.136.108.29: data transmission in json format, containg key "data" and a base64 value;
-2. Host 10.136.127.157: response string, containing the length of the received base64 value.
+1. From "10.136.127.157" to "10.136.108.29": data transmission in json format, containg key "data" and a base64 value;
+2. From "10.136.108.29" to "10.136.127.157": response string, containing the length of the received base64 value.
 
 One way to parse these contents is to identify filters for the corresponding packets, which can be obtained by selecting a field in the details pane and selecting `Context Menu > Apply as Filter > Selected`:
 

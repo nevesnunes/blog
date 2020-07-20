@@ -113,7 +113,7 @@ with launch_ipdb_on_exception():
             f.write(raw_bytes)
 ```
 
-Notice how some base64 values seemed to be truncated, so I had to add some padding bytes (`0`) in order to decode them.
+Notice how some base64 values seemed to be truncated, so I had to add some padding bytes (`parsed_data += '0'`) in order to decode them.
 
 I've looked at response messages as well, by counting each distinct type of message:
 

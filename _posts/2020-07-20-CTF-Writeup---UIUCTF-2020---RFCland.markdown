@@ -2,9 +2,9 @@
 layout: post
 title: CTF Writeup - UIUCTF 2020 - RFCland
 date: 2020-07-20 13:18:37 +0100
-tags: 
-    - ctf 
-    - forensics 
+tags:
+    - ctf
+    - forensics
     - file formats
 ---
 
@@ -144,7 +144,7 @@ Sure enough, one type complains about the number of received bytes. So maybe our
 If we check the mime types of our data files:
 
 ```bash
-file -k * ./out/* \
+file -k * \
     | sed 's/[^:]*:[ \t]*\(.*\)/\1/' \
     | sort \
     | uniq -c \
@@ -154,16 +154,16 @@ file -k * ./out/* \
 We see several false positives, a few JPEGs, and unidentified files:
 
 ```
-[...]
+    1 MPEG ADTS, layer II, v1,  64 kbps, 44.1 kHz, Stereo\012- data
+    1 Non-ISO extended-ASCII text, with CR, NEL line terminators, with escape sequences\012- data
+    1 Non-ISO extended-ASCII text, with no line terminators\012- data
+    1 PGP Secret Sub-key (v1) [...]
+    1 SysEx File -\012- data
     1 TeX font metric data [...]
-    1 TTComp archive, binary, [...]
-    1 Zip archive data, [...]
-    2 Python script text executable\012- [...]
-    3 Python script text executable\012- [...]
+    1 TTComp archive, binary, 4K dictionary\012- data
     5 COM executable for DOS\012- data
-    8 directory
-   52 JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, progressive, precision 8, 200x200, frames 3\012- data
-  253 data
+   51 JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, progressive, precision 8, 200x200, frames 3\012- data
+  251 data
 ```
 
 However, when attempting to open one of the images, our image viewer may spit out an unhelpful error:

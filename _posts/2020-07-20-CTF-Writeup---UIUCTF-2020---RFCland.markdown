@@ -16,11 +16,11 @@ tags:
 
 # Description
 
-Flavour text:
-
 > All RFCs are created equal, right?
 
-When opening this pcap with `wireshark`, we see TCP traffic composed of several conversations. Each conversation is delimited by the [3-way handshake](https://tools.ietf.org/html/rfc793#section-3.4) for establishing a connection:
+# Analysis
+
+When opening the [task's pcap]({{site.url}}{{site.baseurl}}/assets/writeups/UIUCTF2020/challenge.pcap) with `wireshark`, we see TCP traffic composed of several conversations. Each conversation is delimited by the [3-way handshake](https://tools.ietf.org/html/rfc793#section-3.4) for establishing a connection:
 
 ```
 TCP A                                                TCP B

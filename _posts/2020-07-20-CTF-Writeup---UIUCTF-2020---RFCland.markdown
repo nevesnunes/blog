@@ -23,10 +23,10 @@ tags:
 When opening the [task's pcap]({{site.url}}{{site.baseurl}}/assets/writeups/UIUCTF2020/challenge.pcap) with `wireshark`, we see TCP traffic composed of several conversations. Each conversation is delimited by the [3-way handshake](https://tools.ietf.org/html/rfc793#section-3.4) for establishing a connection:
 
 ```
-TCP A                                                TCP B
-1.  CLOSED                                               LISTEN
-2.  SYN-SENT    --> <SEQ=100><CTL=SYN>               --> SYN-RECEIVED
-3.  ESTABLISHED <-- <SEQ=300><ACK=101><CTL=SYN,ACK>  <-- SYN-RECEIVED
+TCP A                                                     TCP B
+1.  CLOSED                                                LISTEN
+2.  SYN-SENT    --> <SEQ=100><CTL=SYN>                --> SYN-RECEIVED
+3.  ESTABLISHED <-- <SEQ=300><ACK=101><CTL=SYN,ACK>   <-- SYN-RECEIVED
 4.  ESTABLISHED --> <SEQ=101><ACK=301><CTL=ACK>       --> ESTABLISHED
 5.  ESTABLISHED --> <SEQ=101><ACK=301><CTL=ACK><DATA> --> ESTABLISHED
 ```

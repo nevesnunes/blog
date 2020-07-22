@@ -213,3 +213,100 @@ With this process, we find that files 95 and 106 are a match. Concatenate these 
     <img src="{{site.url}}{{site.baseurl}}/assets/writeups/UIUCTF2020/flag2.png" alt=""/>
     <img src="{{site.url}}{{site.baseurl}}/assets/writeups/UIUCTF2020/flag3.png" alt=""/>
 </div>
+
+# Intended Solution
+
+After the challenge ended, one of the organizers clarified what RFC they were referencing:
+
+> <https://www.ietf.org/rfc/rfc3514.txt>  
+> you can analyze the packets to see some have the evil bit, the image data of those packets gives the flag  
+
+I tried to come up with an approach that would make this kind of "needle in a haystack" metadata more explicit. Given that only a few packets would contain the flag pieces, we wanted to observe **metadata field values were most of the packets had one value and a few had another value** (fields where all packets differed or were identical could be safely discarded).
+
+Sticking with the line-oriented analysis, I flatten the `tshark` json output using [`gron`](https://github.com/tomnomnom/gron), which allows us to aggregate each field across conversations, since the full path and value of a given field is output in a single line. The following awk script parses these lines by:
+
+- Filtering out the initial prefix, which is just the index of the array of conversations;
+- Counting each occurrence of a field value;
+- Filtering out occurrences that only had one match (i.e. they were distinct in all packets);
+- Printing the occurrence count and the value for each field, sorted at the end for manual comparisons.
+
+```bash
+gron challenge.json \
+    | awk '
+        match($0, /^json\[[0-9]*\]\./) {
+            s = substr($0, RLENGTH + 1, length($0))
+            a[s]++ 
+        }
+        END {
+            for (i in a) {
+                if (a[i] != 1) {
+                    print a[i] " " i
+                } } }' \
+    | sort -n
+```
+
+In a first pass, fields related to time deltas and lengths can be ignored, as these are less likely to contain relevant information. We can also ignore those that match the total number of conversations (314). Eventually we find some mostly common fields (309), related to flags in the IP protocol:
+
+```
+[...]
+9 _source.layers.tcp["tcp.analysis"]["tcp.analysis.bytes_in_flight"] = "1314";
+9 _source.layers.tcp["tcp.analysis"]["tcp.analysis.push_bytes_sent"] = "1314";
+9 _source.layers.tcp["tcp.len"] = "1314";
+9 _source.layers.tcp["tcp.nxtseq"] = "1315";
+309 _source.layers.ip["ip.flags"] = "0x00000000";
+309 _source.layers.ip["ip.flags_tree"]["ip.flags.rb"] = "0";
+314 _index = "packets-2020-07-18";
+314 _score = null;
+314 _source = {};
+314 _source.layers = {};
+[...]
+```
+
+Seems like `ip.flags.rb` is a good candidate for closer inspection. If we look at the other values for this field:
+
+```
+[...]
+5 _source.layers.ip["ip.checksum"] = "0x000074cb";
+5 _source.layers.ip["ip.checksum"] = "0x000074d2";
+5 _source.layers.ip["ip.checksum"] = "0x000074d9";
+5 _source.layers.ip["ip.flags"] = "0x00008000";
+5 _source.layers.ip["ip.flags_tree"]["ip.flags.rb"] = "1";
+5 _source.layers.ip["ip.len"] = "1364";
+5 _source.layers.ip["ip.len"] = "1368";
+5 _source.layers.ip["ip.len"] = "1371";
+[...]
+```
+
+We find that a few had the reserved bit set. It seems to match the description for the "evil bit" in the RFC:
+
+> The high-order bit of the IP fragment offset field is the only unused bit in the IP header.
+
+Now we can repeat the data extraction process, this time with a finer-grained filter:
+
+```bash
+tshark \
+  -r challenge.pcap \
+  -Y 'data.data && ip.dst_host == 10.136.108.29 && ip.flags.rb == 1' \
+  -T json \
+  > challenge_rb_set.json
+./challenge.py challenge_rb_set.json
+cd ./out
+file -k *
+```
+
+There is only one image file and a few unidentified files:
+
+```
+00000000: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, progressive, precision 8, 200x200, frames 3\012- data
+00000001: data
+00000002: data
+00000003: data
+00000004: data
+```
+
+The complete flag can be obtained by concatenating the first 3 files, although I also had to convert it...
+
+```bash
+cat 00000000 00000001 00000002 > 1.jpg
+convert 1.jpg 1.png
+```

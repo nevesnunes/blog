@@ -160,7 +160,9 @@ a.footnote:after {
 /* Avoid negative spacing, it can ruin the kerning of some fonts */
 
 blockquote {
+    border-left: 0.5rem solid #ccc;
     letter-spacing: normal;
+    padding: 0 1em;
 }
 
 .reversefootnote,

@@ -2,7 +2,10 @@
 layout: post
 title: CTF Writeup - rgbCTF 2020 - Advanced Reversing Mechanics 2
 date: 2020-07-15 21:31:39 +0100
-tags: ctf reversing constraint-solving z3
+tags: 
+    - ctf 
+    - reversing 
+    - constraint solving
 ---
 
 {% include custom.html %}

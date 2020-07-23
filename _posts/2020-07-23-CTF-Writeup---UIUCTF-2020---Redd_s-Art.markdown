@@ -347,7 +347,7 @@ gdb.execute("b *(0x555555554000 + 0xA52)")
 # goto start of deobfuscated function
 gdb.execute("set $rip = (0x555555554000 + 0x973)")
 
-for candidate in range(0, 255):
+for candidate in range(0, 256):
     gdb.execute("c")
 
     # store our candidate

@@ -9,11 +9,11 @@ assets-timestamp-obj := $(assets-obj:%=timestamps/%.timestamp)
 timestamps/%.timestamp: $(assets-obj)
 	mkdir -p "$(shell dirname $@)" && \
 	ect \
-		-9 \
+		-6 \
 		-strip \
 		--allfilters \
 		--mt-deflate=2 \
-		--pal_sort=120 \
+		--pal_sort=30 \
 		--strict \
 		$* && \
 	touch $@

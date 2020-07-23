@@ -193,7 +193,7 @@ import os
 import stat
 
 # start of main
-gdb.execute("b *(0x555555554000 + 0xbea)")
+gdb.execute("b *(0x555555554000 + 0xBEA)")
 gdb.execute("r")
 
 # enable writes on obfuscated block
@@ -201,12 +201,12 @@ aligned_addr = (0x555555554000 + 0x973) - (0x555555554000 + 0x973) % 4096
 gdb.execute("p (int)mprotect({}, 4096, 7)".format(aligned_addr))
 
 # goto start of deobfuscator function
-gdb.execute("set $rip = (0x555555554000 + 0xa5a)")
-gdb.execute("b *(0x555555554000 + 0xab8)")
+gdb.execute("set $rip = (0x555555554000 + 0xA5A)")
+gdb.execute("b *(0x555555554000 + 0xAB8)")
 gdb.execute("c")
 
 # validate deobfuscated instructions
-gdb.execute("disassemble /r (0x555555554000 + 0x973),(0x555555554000 + 0x973 + 0xe7)")
+gdb.execute("disassemble /r (0x555555554000 + 0x973),(0x555555554000 + 0x973 + 0xE7)")
 
 i = gdb.inferiors()[0]
 m = i.read_memory(0x555555554000 + 0x973, 0xE7)
@@ -330,8 +330,8 @@ aligned_addr = (0x555555554000 + 0x973) - (0x555555554000 + 0x973) % 4096
 gdb.execute("p (int)mprotect({}, 4096, 7)".format(aligned_addr))
 
 # run deobfuscator function
-gdb.execute("set $rip = (0x555555554000 + 0xa5a)")
-gdb.execute("b *(0x555555554000 + 0xab8)")
+gdb.execute("set $rip = (0x555555554000 + 0xA5A)")
+gdb.execute("b *(0x555555554000 + 0xAB8)")
 gdb.execute("c")
 
 # backup obfuscated string

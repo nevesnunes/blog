@@ -13,8 +13,8 @@ aligned_addr = (0x555555554000 + 0x973) - (0x555555554000 + 0x973) % 4096
 gdb.execute("p (int)mprotect({}, 4096, 7)".format(aligned_addr))
 
 # run deobfuscator function
-gdb.execute("set $rip = (0x555555554000 + 0xa5a)")
-gdb.execute("b *(0x555555554000 + 0xab8)")
+gdb.execute("set $rip = (0x555555554000 + 0xA5A)")
+gdb.execute("b *(0x555555554000 + 0xAB8)")
 gdb.execute("c")
 
 # backup obfuscated string

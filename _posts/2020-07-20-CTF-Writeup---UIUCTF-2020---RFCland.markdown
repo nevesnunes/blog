@@ -304,7 +304,9 @@ There is only one image file and a few unidentified files:
 00000004: data
 ```
 
-The flag can be obtained by concatenating the first 3 files, although I still required the `convert` workaround to view it. I looked up a breakdown of the [JFIF file format](https://raw.githubusercontent.com/corkami/pics/master/binary/JPG.png), which lead me to search our files for the "end of image" marker with `grep $'\xff\xd9`, which returned no matches. So the complete flag also needs those magic bytes appended to work with picky image viewers:
+The flag can be obtained by concatenating the first 3 files, although I still required the `convert` workaround to view it.
+
+To figure out why the image was considered invalid, I looked up a breakdown of the [JFIF file format](https://raw.githubusercontent.com/corkami/pics/master/binary/JPG.png), which lead me to search our files for the "end of image" marker with `grep $'\xff\xd9`, which returned no matches. So the complete flag also needs those magic bytes appended to work with picky image viewers:
 
 ```bash
 cat 00000000 00000001 00000002 <(printf '%s' $'\xff\xd9') > flag.jpg

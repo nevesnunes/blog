@@ -441,7 +441,7 @@ pwndbg> x/2w ($rbp - 0x50)
 0x7fffffffcae0: 0x557a2020      0x00005555
 ```
 
-To sum it up, the handler modifies a 4k page starting at the base address of the executable, which will contain the entrypoint, using values starting at `0x5555557a2020 - 0x555555554000 = 0x24e020`. Since the executable protection was restored at the virtual base address, when the signal handler returns back to `0x640`, execution can resume without segmentation violations, this time with new code! We just unwrapped a self-modifying code routine.
+To sum it up, the handler modifies a 4k page starting at the virtual base address of the executable, which will contain the entrypoint, using values starting at `0x5555557a2020 - 0x555555554000 = 0x24e020`. Since the executable protection was restored at the virtual base address, when the signal handler returns back to `0x640`, execution can resume without segmentation violations, this time with new code! We just unwrapped a self-modifying code routine.
 
 We can now take the new code and store as a new executable, to decompile it and so on, but it appears that doing it under a debugger makes the routine end prematurely at address `0x1000`. I decided to not look deeper into it and just take the static approach, since we already know all the addresses involved:
 

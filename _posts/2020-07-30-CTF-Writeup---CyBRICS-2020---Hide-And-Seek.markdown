@@ -538,8 +538,8 @@ p (int)mmap(0x100000000, 0x1000, 0x3, 0x22, (int)open("/dev/mem", 0x2), 0x0)
 By stepping through these breakpoints, we go through the following validations:
 
 - Input password = `cybrics{HI_this_is_fake_flag}`: This string is hardcoded in the check, so sadly we don't need `z3` or `angr` to retrieve it;
-- Open file `.realflag`: We just need to `touch` it
-- Read bytes from file, length must be 32 bytes: we add some placeholder to the file
+- Open file `.realflag`: We just need to `touch` it;
+- Read bytes from file, length must be 32 bytes: we add some placeholder to the file.
 
 Afterwards, we get this sequence of syscalls:
 

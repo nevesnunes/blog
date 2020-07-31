@@ -98,7 +98,7 @@ if ((((((((char)(param_1[0x1c] * '&' +
 // [...]
 ```
 
-If your first instinct is to look at this and think "oh, equations, time to crank some symbolic execution in `angr`", you will hit a dead end. Even if you do find a solution, it is actually a fake flag, because there are more code paths we aren't aware of...
+If your first instinct is to look at this and think "oh, equations, time to crank some symbolic execution in `angr`", you will hit a <span class="c-badge c-badge-nok">dead end</span>. Even if you do find a solution, it is actually a fake flag, because there are more code paths we aren't aware of...
 
 ---
 

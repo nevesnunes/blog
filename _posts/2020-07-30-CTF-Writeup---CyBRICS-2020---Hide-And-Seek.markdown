@@ -384,7 +384,7 @@ syscall <SYS_mmap>
     offset: 0x0
 ```
 
-Note that `prot: 0x3` sets bits [`PROT_READ | PROT_WRITE`](https://code.woboq.org/userspace/glibc/sysdeps/unix/sysv/linux/bits/mman-linux.h.html). With `readelf -a`, we know that the entrypoint is at `0x640`. So, as soon as this functions returns, and the dynamic linker initialization ends, the entrypoint will be executed and a `SIGSEGV` will be thrown, due to this address not having execution permission. Therefore, the signal handler that was defined earlier will be called.
+Note that `prot: 0x3` sets bits [`PROT_READ | PROT_WRITE`](https://code.woboq.org/userspace/glibc/sysdeps/unix/sysv/linux/bits/mman-linux.h.html). With `readelf -a`, we know that the entrypoint is at `0x640`, which is contained in range `0x555555554000..0x555555554000 + 0x1000`. So, as soon as this functions returns, and the dynamic linker initialization ends, the entrypoint will be executed and a `SIGSEGV` will be thrown, due to this address not having execution permission. Therefore, the signal handler that was defined earlier will be called.
 
 If we look at the handler's source, identified by taking the address passed as argument to `rt_sigaction`:
 

@@ -600,7 +600,7 @@ It seems it called a kernel API that computes the sha1sum of fake flag string. W
 7196aba15d503704fe2ef814adbc4ab33d88c353  /proc/self/fd/11
 ```
 
-This value is then used in another network call:
+This value is then used in another socket initialization:
 
 ```
 0x5555555551cd    syscall <SYS_socket>

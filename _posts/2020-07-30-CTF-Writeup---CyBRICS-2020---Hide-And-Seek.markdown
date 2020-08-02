@@ -589,7 +589,6 @@ Moving on:
 
 pwndbg> x/s $rsi
 0x7ffff7ffb000: "q\226\253\241]P7\004\376.\370\024\255\274J\263=\210\303Sake_flag}"
-=> 7196aba15d503704fe2ef814adbc4ab3 3d88c353
 pwndbg> x/4xw $rsi
 0x7ffff7ffb000: 0xa1ab9671      0x0437505d      0x14f82efe      0xb34abcad
 ```

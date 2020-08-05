@@ -34,6 +34,17 @@ Yak Shaving
 - [Rabbit Holes: The Secret to Technical Expertise](http://blog.bityard.net/articles/2019/August/rabbit-holes-the-secret-to-technical-expertise.html)
 - [Everything I googled in a week as a professional software engineer](https://localghost.dev/2019/09/everything-i-googled-in-a-week-as-a-professional-software-engineer/)
 
+Development Challenges
+- We wanted to implement **sorted and paginated search results** for a web interface. These results were retrieved from multiple databases, running distinct database engines. It would be highly inefficient to retrieve the full result sets in a single request.
+    - The solution I developed was to **asynchronously perform, for each database, a ranged sql query**. At the application level, we **merged and sorted the result sets** of these queries. If we returned back to the web interface some results of a given database, we would increment and cache the corresponding range offset, so that **requesting the next page would fetch the next ranged result set**.
+    - I found this challenge interesting due to implementing an algorithm from scratch for a complex use case which was not contemplated by the frameworks we were using.
+- We wanted to **manage an application's lifecycle** with the service manager `systemd`. When the process was stopped with our service, some **subprocesses did not perform a clean shutdown**, while stopping the application manually resulted in all subprocesses successfully shutting down.
+    - The root cause was found while comparing the system calls between the two shutdown procedures. The service sent a kill signal to the parent process and each child, while the manual stop only sent a kill to the parent process, which in turn sent network requests to each subprocess containing a command to gracefully shutdown. After reconfiguring the service to **only send a kill signal to the parent process**, the issue was solved.
+    - I found this challenge interesting due to requiring low-level analysis, since there were no evidences for this behaviour in typical indicators such as application logs.
+- We wanted to **run an application in a separate sub-network**, although it did not have support for this scenario. An endpoint of this application (`A`) returned an address for another application in the sub-network (`B`). This address was consumed by both `A` and an external application in a VPN network (`C`). Setting a sub-network address couldn't be resolved by host `C`, while setting a VPN network address couldn't be resolved by host `A`.
+    - The solution I applied was to add a **NAT OUTPUT rule in the firewall of the endpoint host**, causing locally-generated packets to a given IP and port in the VPN network range to be sent to a sub-network IP and port instead. This allowed `A` to communicate with `B`, while setting an address reachable by `C`.
+    - I found this challenge interesting due to requiring cross-cutting knowledge in networking, allowing us to continue using our applications in the scenario we needed.
+
 ## Source code
 
 Available in a [git repository](https://github.com/nevesnunes/blog/tree/gh-pages). Feel free to open an issue if you want to leave a comment on a post.

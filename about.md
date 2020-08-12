@@ -22,6 +22,7 @@ Computer Security
 Data Analysis
 - [24\-core CPU and I can't move my mouse](https://randomascii.wordpress.com/2017/07/09/24-core-cpu-and-i-cant-move-my-mouse/)
 - [Analysing Petabytes of Websites](https://tech.marksblogg.com/petabytes-of-website-data-spark-emr.html)
+- [Battelle Publishes Open Source Binary Visualization Tool](https://inside.battelle.org/blog-details/battelle-publishes-open-source-binary-visualization-tool)
 - [Wireshark visualization TIPS & tricks by Megumi Takeshita \- SharkFest'19](https://sharkfestus.wireshark.org/assets/presentations19/28-37.pdf)
 
 Systems Programming

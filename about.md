@@ -12,7 +12,6 @@ Oftentimes, errors are aggravated by unhelpful or misleading messages. We can ta
 
 Computer Security
 - [CTFtime.org \| Writeups](https://ctftime.org/writeups)
-- [GitHub \| CTFs](https://github.com/ctfs)
 - [IppSec \| HackTheBox Writeups](https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA)
 - [34c3 CTF minbashmaxfun writeup](https://medium.com/@orik_/34c3-ctf-minbashmaxfun-writeup-4470b596df60)
 - [Solving warsaw&\#8217;s Java Crackme 3 &\#8211; ReWolf&\#039;s blog](http://blog.rewolf.pl/blog/?p=856)
@@ -22,6 +21,7 @@ Computer Security
 Data Analysis
 - [24\-core CPU and I can't move my mouse](https://randomascii.wordpress.com/2017/07/09/24-core-cpu-and-i-cant-move-my-mouse/)
 - [Analysing Petabytes of Websites](https://tech.marksblogg.com/petabytes-of-website-data-spark-emr.html)
+- [Using FOIA Data and Unix to halve major source of parking tickets](https://mchap.io/using-foia-data-and-unix-to-halve-major-source-of-parking-tickets.html)
 - [Battelle Publishes Open Source Binary Visualization Tool](https://inside.battelle.org/blog-details/battelle-publishes-open-source-binary-visualization-tool)
 - [Wireshark visualization TIPS & tricks by Megumi Takeshita \- SharkFest'19](https://sharkfestus.wireshark.org/assets/presentations19/28-37.pdf)
 

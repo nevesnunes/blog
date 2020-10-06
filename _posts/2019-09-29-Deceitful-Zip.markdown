@@ -146,7 +146,7 @@ Marking a file in a zip as password protected is as simple as setting fields `Pk
 We still need a password. The invalid zip is used by a closed-source application. After decompiling it, finding the hardcoded password was just a matter of running a proximity search for keywords `xod` and `password`:
 
 ```bash
-grep -A 10 -B 10 --color=always -rin 'xod' . | `
+grep -A 10 -B 10 --color=always -rin 'xod' . | \
     tee >(grep -i 'password')
 ```
 

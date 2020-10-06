@@ -350,7 +350,9 @@ r
 set $rip = 0x5555555a19d6
 ```
 
-It is easier to follow system calls with `pwndbg`, as both name and arguments get resolved, based on [calling conventions](https://man7.org/linux/man-pages/man2/syscall.2.html). After taking the jump, the following system call is executed:
+It is easier to follow system calls with `pwndbg`, as both name and arguments get resolved[^1], based on [calling conventions](https://man7.org/linux/man-pages/man2/syscall.2.html). After taking the jump, the following system call is executed:
+
+[^1]: After the CTF, I learned that `ghidra` can replace `syscall` with the resolved name, by manually running `ResolveX86orX64LinuxSyscallsScript` from Script Manager. Alternatively, there is a [script that also includes arguments](https://github.com/0xb0bb/pwndra#annotate-syscalls) as comments.
 
 ```
 0x5555555a1aa2    syscall <SYS_rt_sigaction>

@@ -86,7 +86,7 @@ done
 
 We should be able to calculate the difference in size of compressed data (i.e. `Packed Size`, also provided by `7z -slt l`) between the original archive with the PNG payload and the repacked archive without such payload. In summary, skip the initial headers + the compressed data, and extract bytes up to the start of the final header (i.e. `NextHeaderOffset`).
 
-However, this produced an invalid PNG. I had to download a PNG file with the same chunks and work from there, to understand what was wrong. Recalling the PNG format, we can see that a chunk ends with a CRC32 value, followed by the size and id of the next chunk. After inspecting the extracted bytes from the two first 7zip files, I noticed that my header chunk was larger than expected.
+However, this produced an invalid PNG. I had to download a PNG file with the same chunks and work from there, to understand what was wrong. Recalling the PNG format, we can see that a chunk ends with a CRC32 value, followed by the size and id of the next chunk. After inspecting the extracted bytes from the two first 7zip files, I noticed that my header chunk was larger than expected, since the next id appeared too late.
 
 Apparently, `Packed Size` does not include all the compressed data. Let's diff an original archive with a repacked archive in `010 Editor` (`Tools > Compare Files... > Comparison Type = Binary`):
 

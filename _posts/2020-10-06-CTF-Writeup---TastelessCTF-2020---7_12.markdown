@@ -104,7 +104,7 @@ Our `NextHeader` is identified as `EncodedHeader`, with the following structure 
             - (array of byte values)
 ```
 
-By comparing a few other archives, we conclude that the PNG data starts at `PackPos + max(i for i in packSizes)` (it adds up to the start of the next header in the repacked archive). The value of `PackPos` matches the `Packed Size` reported by `7z -slt t`.  Notice an idiosyncrasy in the `packSizes` field: if the first byte is `>= 0x80`, then the value to read is the least significant nibble of the first byte (for the original part2_0.7z it is `0`) plus the value of the next byte.
+By comparing a few other archives, we conclude that the PNG data starts at `PackPos + max(i for i in packSizes)` (it adds up to the start of the next header in the repacked archive). The value of `PackPos` matches the `Packed Size` reported by `7z -slt l`.  Notice an idiosyncrasy in the `packSizes` field: if the first byte is `>= 0x80`, then the value to read is the least significant nibble of the first byte (for the original part2_0.7z it is `0`) plus the value of the next byte.
 
 Is that all? Nope! We compared archives with multiple junk files, how about archives with a single junk file?
 

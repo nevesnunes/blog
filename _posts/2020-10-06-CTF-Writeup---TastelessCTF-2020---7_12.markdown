@@ -184,6 +184,9 @@ with open(sys.argv[1], "rb") as f:
     sys.stdout.buffer.write(png_part)
 ```
 
+{::options parse_block_html="true" /}
+<div class="c-indirectly-related">
+
 The output controlled with the `LOG` variable was used to validate the offsets to extract `PackPos`, which should match `Packed Size` values:
 
 ```bash
@@ -194,6 +197,9 @@ ls -1 ./part2/ | sort -V | while IFS= read -r i; do
     <(env LOG=1 ./7z_solution.py ./part2/"$i" | awk '/pack_pos:/{print $2}')
 done
 ```
+
+</div>
+{::options parse_block_html="false" /}
 
 After running the extraction script for each archive and concatenating all PNG data:
 

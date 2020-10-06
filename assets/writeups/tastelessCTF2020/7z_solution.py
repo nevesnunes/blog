@@ -16,7 +16,7 @@ with open(sys.argv[1], "rb") as f:
     next_header_offset = int.from_bytes(raw_offset, byteorder="little")
     log(f"next_header_offset: {next_header_offset}")
 
-    # Sizes of SignatureHeader + StartHeader
+    # SignatureHeader + StartHeader
     start_header_size = 0x20
 
     next_header_pos = start_header_size + next_header_offset

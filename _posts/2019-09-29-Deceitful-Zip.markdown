@@ -2,7 +2,10 @@
 layout: post
 title: Deceitful Zip
 date: 2019-09-29 00:00:00 +0100
-tags: compression cryptography
+tags: 
+    - compression 
+    - cryptography
+    - file formats
 ---
 
 What appeared to be a regular zip file could not be successfully extracted. Each extracted file would be empty or contain junk bytes. The file hierarchy could be read, and none of those files were password protected. Could there be some actual corruption in the zip, or was something else going on?

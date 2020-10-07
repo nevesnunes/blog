@@ -140,7 +140,11 @@
 /* Overrides */
 
 .footnotes {
-    border-top: 0.25rem dashed white;
+    border-top: 0.5rem dashed white;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    margin: 1rem 0;
     padding: 1rem 0;
 }
 
@@ -175,8 +179,11 @@ figcaption {
 }
 
 hr {
-    border: 0.25rem dashed white;
-    margin-bottom: 1rem;
+    border-top: 0.5rem dashed white;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    margin: 1rem 0;
 }
 
 pre {

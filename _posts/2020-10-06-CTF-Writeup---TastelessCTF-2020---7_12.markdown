@@ -35,7 +35,7 @@ When dealing with binary formats, `Kaitai Struct` provides a mapping from bytes 
 - NextHeader
 ```
 
-Note that manually increasing the value of `NextHeaderOffset` allows a payload to be introduced after the compressed data, without disrupting decompression. In the case of task "7/11", it was a [container]({{ site.url }}{{ site.baseurl }}/assets/writeups/tastelessCTF2020/challenge.7z) with a payload data consisting of [password-protected files for this task]({{ site.url }}{{ site.baseurl }}/assets/writeups/tastelessCTF2020/part2.7z), whereas the password was found in the compressed data.
+Note that manually increasing the value of `NextHeaderOffset` allows a payload to be introduced after the compressed data, without disrupting decompression. In the case of task "7/11", it was a [container]({{ site.url }}{{ site.baseurl }}/assets/writeups/tastelessCTF2020/challenge.7z) with a payload consisting of [password-protected files for this task]({{ site.url }}{{ site.baseurl }}/assets/writeups/tastelessCTF2020/part2.7z), whereas the password was found in the compressed data.
 
 # Analysis
 

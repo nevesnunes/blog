@@ -50,4 +50,4 @@ Development Challenges
 
 ## Source code
 
-Available in a [git repository](https://github.com/nevesnunes/blog/tree/gh-pages). Feel free to open an issue if you want to leave a comment on a post.
+Available in a [git repository](https://github.com/nevesnunes/blog/tree/gh-pages). Feel free to open an issue if you want to leave a comment.

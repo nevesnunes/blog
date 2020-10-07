@@ -14,6 +14,8 @@ tags:
 
 We want to extract our flag from multiple 7zip files, which happen to only contain junk files.
 
+When dealing with binary formats, `Kaitai Struct` provides a mapping from bytes to data structures. Unfortunately, there was no parser available for 7zip, so I turned to the proprietary alternative: `010 Editor`, which does have a [template for 7zip](https://www.sweetscape.com/010editor/repository/files/7ZIP.bt). However, we will see that it doesn't have full support...
+
 # Description
 
 > Hint: "If you have trouble solving 7/12, it may makes sense to understand the solution for 7/11!"
@@ -34,8 +36,6 @@ We want to extract our flag from multiple 7zip files, which happen to only conta
 ```
 
 Note that manually increasing the value of `NextHeaderOffset` allows a payload to be introduced after the compressed data, without disrupting decompression. In the case of task "7/11", it was a [container]({{ site.url }}{{ site.baseurl }}/assets/writeups/tastelessCTF2020/challenge.7z) with the [files for this task]({{ site.url }}{{ site.baseurl }}/assets/writeups/tastelessCTF2020/part2.7z).
-
-When dealing with binary formats, `Kaitai Struct` provides a mapping from bytes to data structures. Unfortunately, there was no parser available for 7zip, so I turned to the proprietary alternative: `010 Editor`, which does have a [template for 7zip](https://www.sweetscape.com/010editor/repository/files/7ZIP.bt). However, we will see that it doesn't have full support...
 
 # Analysis
 

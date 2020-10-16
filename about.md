@@ -24,6 +24,7 @@ Data Analysis
 - [Using FOIA Data and Unix to halve major source of parking tickets](https://mchap.io/using-foia-data-and-unix-to-halve-major-source-of-parking-tickets.html)
 - [Battelle Publishes Open Source Binary Visualization Tool](https://inside.battelle.org/blog-details/battelle-publishes-open-source-binary-visualization-tool)
 - [Wireshark visualization TIPS & tricks by Megumi Takeshita \- SharkFest'19](https://sharkfestus.wireshark.org/assets/presentations19/28-37.pdf)
+- [Visualizing Commodore 1541 Disk Contents – Part 2: Errors - pagetable\.com](https://www.pagetable.com/?p=1356)
 
 Systems Programming
 - [Debugging memory corruption: who the hell writes “2” into my stack?! \- Unity Technologies Blog](https://blogs.unity3d.com/2016/04/25/debugging-memory-corruption-who-the-hell-writes-2-into-my-stack-2/)

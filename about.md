@@ -11,12 +11,12 @@ Oftentimes, errors are aggravated by unhelpful or misleading messages. We can ta
 ## Inspiration
 
 Computer Security
-- [CTFtime.org \| Writeups](https://ctftime.org/writeups)
-- [IppSec \| HackTheBox Writeups](https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA)
 - [34c3 CTF minbashmaxfun writeup](https://medium.com/@orik_/34c3-ctf-minbashmaxfun-writeup-4470b596df60)
 - [Solving warsaw&\#8217;s Java Crackme 3 &\#8211; ReWolf&\#039;s blog](http://blog.rewolf.pl/blog/?p=856)
-- [nullsecurity\.org/articles \- "crackmes\.one : noverify's GraxCode's Java CrackMe 1"](http://www.nullsecurity.org/article/crackmes_one_noverify_graxcode_java_crackme_1)
+- [crackmes\.one: noverify's GraxCode's Java CrackMe 1 \- nullsecurity\.org/articles](http://www.nullsecurity.org/article/crackmes_one_noverify_graxcode_java_crackme_1)
+- [Reddish \- HackTheBox Writeup \- IppSec](https://www.youtube.com/watch?v=Yp4oxoQIBAM)
 - [Fuzzing Browsers for weird XSS Vectors \- LiveOverflow](https://www.youtube.com/watch?v=yq_P3dzGiK4)
+- [Hacking with Environment Variables](https://www.elttam.com/blog/env/)
 
 Data Analysis
 - [24\-core CPU and I can't move my mouse](https://randomascii.wordpress.com/2017/07/09/24-core-cpu-and-i-cant-move-my-mouse/)
@@ -34,7 +34,7 @@ Systems Programming
 
 Yak Shaving
 - [blog_deploy_yak_shave.md](https://gist.github.com/trptcolin/3353806872d367819f0709c4607acbb8)
-- [Lobsters \| What's your current yak-shaving depth?](https://lobste.rs/s/ngswph/what_s_your_current_yak_shaving_depth)
+- [What's your current yak-shaving depth? \- Lobsters](https://lobste.rs/s/ngswph/what_s_your_current_yak_shaving_depth)
 - [Rabbit Holes: The Secret to Technical Expertise](http://blog.bityard.net/articles/2019/August/rabbit-holes-the-secret-to-technical-expertise.html)
 - [Everything I googled in a week as a professional software engineer](https://localghost.dev/2019/09/everything-i-googled-in-a-week-as-a-professional-software-engineer/)
 

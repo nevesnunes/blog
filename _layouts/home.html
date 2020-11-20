@@ -4,21 +4,21 @@ layout: default
 
 <div class="home">
     {% for post in site.posts %}
-        {% assign phrases = post.content | 
-            markdownify | 
+        {% assign phrases = post.content |
+            markdownify |
             replace: '</h1>', ': ' |
             replace: '</h2>', ': ' |
             replace: '</h3>', ': ' |
             replace: '</h4>', ': ' |
             replace: '</h5>', ': ' |
             replace: '</h6>', ': ' |
-            strip_html | 
+            strip_html |
             split: '.' %}
-        {% assign content = phrases[0] | 
-            append: '.' | 
-            append: phrases[1] | 
+        {% assign content = phrases[0] |
+            append: '.' |
+            append: phrases[1] |
             append: '...' %}
-        <h2>
+        <h2 class="no-anchor">
             {% if post.title %}
                 <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
             {% endif %}

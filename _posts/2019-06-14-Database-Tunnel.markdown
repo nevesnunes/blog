@@ -103,7 +103,7 @@ Unfortunately, user `foo` at `remote_entrypoint` wasn't an admin, so running `tc
 
 An alternative would be to forward TCP traffic from `remote_entrypoint:1521` to `remote_database:1521`, and have `local_client` connect to the former. This way, we could run an unprivileged application that dumps its forwarded traffic.
 
-One way to accomplish that would be with 2 instances of `netcat` and a FIFO pipe (optionally storing the processed input and output in files): 
+One way to accomplish that would be with 2 instances of `netcat` and a FIFO pipe (optionally storing the processed input and output in files):
 
 ```bash
 mknod backpipe p && ( \

@@ -218,8 +218,8 @@ With this process, we find that files 95 and 106 are a match. Concatenate these 
 
 After the challenge ended, one of the organizers clarified what RFC they were referencing:
 
-> <https://www.ietf.org/rfc/rfc3514.txt>  
-> you can analyze the packets to see some have the evil bit, the image data of those packets gives the flag  
+> <https://www.ietf.org/rfc/rfc3514.txt>
+> you can analyze the packets to see some have the evil bit, the image data of those packets gives the flag
 
 I tried to come up with an approach that would make this kind of "needle in a haystack" metadata more explicit. Given that only a few packets would contain the flag pieces, we wanted to observe **metadata field values were most of the packets had one value and a few had another value** (fields where all packets differed or were identical could be safely discarded).
 
@@ -235,7 +235,7 @@ gron challenge.json \
     | awk '
         match($0, /^json\[[0-9]*\]\./) {
             s = substr($0, RLENGTH + 1, length($0))
-            a[s]++ 
+            a[s]++
         }
         END {
             for (i in a) {

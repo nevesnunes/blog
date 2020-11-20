@@ -58,6 +58,17 @@ exclude:
 
 timezone: Europe/London
 
-custom_tag_description:
+custom_topics:
   fluff:
-    description: Off-topic
+    description: Off-topic.
+  file_formats:
+    description: Parsing and manipulation of sections in binary structures.
+  reversing:
+    description: Reverse engineering of binary executables.
+  virtualization:
+    description: Virtual machines and containers.
+custom_methodologies:
+  bruteforce:
+    description: Identify a feasible search space and a boolean-based test, then guess an expected value. If <a href="https://en.wikipedia.org/wiki/Data_parallelism#Steps_to_parallelization">data can be divided</a>, performance is improved by multithreading.
+  lookup_magic:
+    description: Identify file formats by signatures, algorithms by constants...

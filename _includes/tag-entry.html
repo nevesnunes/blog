@@ -1,0 +1,22 @@
+{% assign tag_name = include.tag_name %}
+{% assign tag_config_name = tag_name | replace: " ", "_" %}
+{% if site.custom_methodologies contains tag_config_name %}
+    {% assign tag_class_name = "c-badge-secondary" %}
+    {% assign tag_description = site.custom_methodologies[tag_config_name].description %}
+{% else %}
+    {% assign tag_class_name = "c-badge-primary" %}
+    {% assign tag_description = site.custom_topics[tag_config_name].description %}
+{% endif %}
+<div class="archive-group">
+    <div>
+        <p class="tag-head" id="{{ tag_name | slugize }}">
+            <a href="{{ site.baseurl }}/tags/#{{ tag_name | slugize }}"><span class="c-badge c-badge-big {{ tag_class_name }}" name="{{ tag_name | slugize }}">{{ tag_name }}</span></a>
+            {% if tag_description %} = {{ tag_description }} {% endif %}
+        </p>
+    </div>
+    {% for post in site.tags[tag_name] %}
+        <article class="archive-item">
+            <span class="c-list-item"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></span>
+        </article>
+    {% endfor %}
+</div>

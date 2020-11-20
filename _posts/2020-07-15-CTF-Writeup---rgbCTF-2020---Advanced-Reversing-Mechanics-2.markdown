@@ -2,9 +2,9 @@
 layout: post
 title: CTF Writeup - rgbCTF 2020 - Advanced Reversing Mechanics 2
 date: 2020-07-15 21:31:39 +0100
-tags: 
-    - ctf 
-    - reversing 
+tags:
+    - ctf
+    - reversing
     - constraint solving
 ---
 
@@ -36,7 +36,7 @@ void encryptFlag(byte *param_1) {
   byte bVar4;
   uint uVar5;
   uint uVar6;
-  
+
   bVar4 = *param_1;
   pbVar1 = param_1;
   if (bVar4 == 0) {
@@ -96,7 +96,7 @@ Note that while calculations are done for the next character, they don't impact 
 
 Due to these properties, a manual bruteforce becomes feasible and solves the problem in no more then a few seconds.
 
-## Deriving the constraints 
+## Deriving the constraints
 
 Let's start with our known properties: the output bytes and the flag values (usually a known prefix, in this case `rgbCTF{`, with ASCII values in the middle, ending with `}`).
 
@@ -127,10 +127,10 @@ for i in range(flag_len):
     uVar5 = flag[i]
     uVar3 = (uVar5 - 10) & 0xff
     uVar6 = uVar5
-    uVar6 = If(flag[i] < 0x50, 
-               If(uVar3 > 0x50, 
-                  (uVar5 + 0x46) & 0xff, 
-                  uVar3), 
+    uVar6 = If(flag[i] < 0x50,
+               If(uVar3 > 0x50,
+                  (uVar5 + 0x46) & 0xff,
+                  uVar3),
                uVar5)
 ```
 

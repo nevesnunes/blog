@@ -30,7 +30,7 @@ undefined8 FUN_0014d0bf(void) {
   long in_FS_OFFSET;
   char local_118 [264];
   long local_10;
-  
+
   local_10 = *(long *)(in_FS_OFFSET + 0x28);
   puts("Hi! enter password:");
   fgets(local_118,0x100,stdin);
@@ -211,15 +211,15 @@ With the section address from `readelf -a`, we can inspect it under `ghidra` at 
 
 ```
 //
-// .eh_frame 
+// .eh_frame
 // SHT_PREINIT_ARRAY  [0x24dd80 - 0x24dd87]
 // ram: 0034dd80-0034dd87
 //
 **************************************************************
 * Common Information Entry                                   *
 **************************************************************
-cie_0034dd80                        XREF[3]:     001000f8(*), 00100210(*), 
-                                                 _elfSectionHeaders::000004d0(*)  
+cie_0034dd80                        XREF[3]:     001000f8(*), 00100210(*),
+                                                 _elfSectionHeaders::000004d0(*)
 0034dd80 90 d6 14 00     ddw        14D690h     (CIE) Length
 0034dd84 00 00 00 00     ddw        0h          (CIE) ID
 ```
@@ -254,7 +254,7 @@ undefined[16] FUN_my_text__0014d7a3(void) {
   char *local_580;
   undefined8 auStack1216 [21];
   char local_418 [1040];
-  
+
   syscall();
   uVar2 = 0x400;
   syscall();
@@ -480,7 +480,7 @@ We now stumble upon a very different entrypoint function:
 void entry(void) {
   long lVar1;
   undefined8 uVar2;
-  
+
   FUN_00100891();
   _DAT_100000010 = FUN_00100d72();
   lVar1 = FUN_00100973(_DAT_100000010,0x100);

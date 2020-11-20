@@ -2,7 +2,7 @@
 layout: post
 title: Almost UTF-16
 date: 2019-06-15 00:00:00 +0100
-tags: 
+tags:
     - build tools
     - text encoding
     - file formats
@@ -133,7 +133,7 @@ mget/96 @0: Botanical Dimensions \r\n\r\n- Um, pick a color.\r\n- Blue.\r\n- B-L
 
 There are lots of false positives like "broken XML document", where the text seems pretty readable (even introducing the missing `\n`!?). Even though there was a pattern for UTF-32, there was none for UTF-16, which seems suprising given that the BOM can be considered as a magic number for UTF-32, so why not UTF-16? Apparently, this particular detection is done in another part of the code, and the debug dump doesn't include those verifications.
 
-The logic we are interested in is under file [`encoding.c`](https://github.com/file/file/blob/a0d5b0e4e9f97d74a9911e95cedd579852e25398/src/encoding.c), in particular these functions: 
+The logic we are interested in is under file [`encoding.c`](https://github.com/file/file/blob/a0d5b0e4e9f97d74a9911e95cedd579852e25398/src/encoding.c), in particular these functions:
 
 ```c
 protected int
@@ -149,7 +149,7 @@ Function `file_encoding` tests for several character codes and attempts to read 
 
 [^1]: UCS stands for Universal Coded Character Set, and [UCS-16 is an incorrect designation that should be either UCS-2 or UTF-16](https://en.wikipedia.org/wiki/Universal_Coded_Character_Set#Encoding_forms).
 
-Next step was to compile and run `file` in a debugger. 
+Next step was to compile and run `file` in a debugger.
 
 {::options parse_block_html="true" /}
 <div class="c-indirectly-related">
@@ -162,7 +162,7 @@ Given that this program is built with [Autotools](https://en.wikipedia.org/wiki/
 #!/bin/sh
 
 # Builds app with debug symbols.
-# 
+#
 # Reference:
 # https://stackoverflow.com/a/4680578/8020917
 
@@ -173,7 +173,7 @@ if [ -f Makefile ]; then
 fi
 
 mkdir -p debug
-cd debug 
+cd debug
 
 # To ensure breakpoints are always set
 # in the corresponding source code line and
@@ -247,7 +247,7 @@ $36 = 23
 (gdb) p/x *ubf@*ulen
 $37 = {0x42, 0x6f, 0x74, 0x61, 0x6e, 0x69, 0x63, 0x61, 0x6c, 0x20, 0x44, 0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x73, 0x20, 0xa00, 0x0}
 (gdb) p/c *ubf@*ulen
-$38 = {66 'B', 111 'o', 116 't', 97 'a', 110 'n', 105 'i', 99 'c', 97 'a', 108 'l', 32 ' ', 68 'D', 105 'i', 109 'm', 101 'e', 
+$38 = {66 'B', 111 'o', 116 't', 97 'a', 110 'n', 105 'i', 99 'c', 97 'a', 108 'l', 32 ' ', 68 'D', 105 'i', 109 'm', 101 'e',
   110 'n', 115 's', 105 'i', 111 'o', 110 'n', 115 's', 32 ' ', 0 '\000', 0 '\000'}
 ```
 
@@ -262,13 +262,13 @@ Looking at the above parsing done by `file`, it seems that cases of partial succ
 - Provide a percentage of confidence for a given file type, filtered by higher scored types (could be based on total parsed text or statistical analysis of byte histograms). Other heuristics could be explored, such as those from Github's [`linguist`](https://github.com/github/linguist). However, there is a risk of being too optimistic, as shown in the following comparison, which uses the python module [`chardet`](https://pypi.org/project/chardet/):
 
 ```
-xxd bom-and-junk 
+xxd bom-and-junk
 00000000: fffe 000a 0000                           ......
 
-file -ib bom-and-junk 
+file -ib bom-and-junk
 text/plain; charset=binary
 
-chardetect bom-and-junk 
+chardetect bom-and-junk
 bom-and-junk: UTF-16 with confidence 1.0
 ```
 

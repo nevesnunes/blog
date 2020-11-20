@@ -9,7 +9,7 @@ A showcase of interesting debugging sessions and other technical writeups relate
 From these case studies, we can extract:
 
 - Reusable [methodologies]({{ site.baseurl }}/tags/#methodologies) to apply in similar scenarios;
-- Disclosed information that can be translated to bug reports or patches. Consider how oftentimes interface errors are aggravated by insufficient, misleading, or unintended messages.
+- Disclosed information that can spark new bug reports or patches. Consider how oftentimes interface errors are aggravated by insufficient, misleading, or unintended messages.
 
 ## Inspiration
 

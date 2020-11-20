@@ -9,8 +9,14 @@
         <br/>
         Tags:
         {% for tag in metadata.tags %}
+            {% assign tag_config_name = tag | replace: " ", "_" %}
+            {% if site.custom_methodologies contains tag_config_name %}
+                {% assign tag_class_name = "c-badge-secondary" %}
+            {% else %}
+                {% assign tag_class_name = "c-badge-primary" %}
+            {% endif %}
             <a href="{{ site.baseurl }}/tags/#{{ tag | slugize }}">
-                <span class="c-badge c-badge-primary">{{ tag }}</span></a>
+                <span class="c-badge {{ tag_class_name }}">{{ tag }}</span></a>
         {% endfor %}
     {% endif %}
 </p>

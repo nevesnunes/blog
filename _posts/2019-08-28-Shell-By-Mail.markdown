@@ -2,7 +2,7 @@
 layout: post
 title: Shell By Mail
 date: 2019-08-28 00:00:00 +0100
-tags: 
+tags:
     - mail
     - virtualization
 ---
@@ -401,7 +401,7 @@ Handled by `opendkim`, which [was accounted for in our base image](https://githu
 ```bash
 # Instead of passing a DKIM private key,
 # generate it in the container and copy it
-# to the target directory checked by 
+# to the target directory checked by
 # `install.sh` from `catatnight/postfix`
 opendkim-genkey -s mail -d "$MAILSH_DOMAIN"
 mkdir -p /etc/opendkim/domainkeys

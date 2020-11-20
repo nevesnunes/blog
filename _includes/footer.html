@@ -1,0 +1,12 @@
+<script src="{{ '/assets/js/anchor.min.js' | relative_url }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(event) {
+    anchors.options.icon = '#';
+    anchors.options.visible = 'always';
+    var selector = 'h1,h2,h3,h4,h5,h6'
+        .split(',')
+        .map(e => e + ':not(.no-anchor):not(.post-title)')
+        .join(',');
+    anchors.add(selector);
+});
+</script>

@@ -42,11 +42,18 @@
     color: white;
 }
 
+.c-badge-secondary,
+.c-btn-secondary {
+    background-color: darkcyan;
+    color: white;
+}
+
 .c-badge-primary:hover,
-.c-btn-primary:hover {
-    background-color: #000099;
-    border-color: #000066;
+.c-btn-primary:hover,
+.c-badge-secondary:hover,
+.c-btn-secondary:hover {
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .c-btn {
@@ -108,8 +115,11 @@
     fill: #aaa;
 }
 
-.c-indented-item {
-    padding-left: 2em;
+.c-list-item {
+    padding-left: 30px;
+    display: list-item;
+    list-style-type: disc;
+    list-style-position: inside;
 }
 
 .c-small {
@@ -166,6 +176,11 @@ table tr td {
 
 
 /* Overrides */
+
+.archive-group {
+    /* == p */
+    margin-bottom: 15px;
+}
 
 .footnotes {
     border-top: 0.5rem dashed white;

@@ -2,7 +2,7 @@
 layout: post
 title: CTF Writeup - UIUCTF 2020 - Redd's Art
 date: 2020-07-23 12:18:40 +0100
-tags: ctf reversing debugging
+tags: ctf reversing debugging bruteforce
 ---
 
 {% include custom.html %}

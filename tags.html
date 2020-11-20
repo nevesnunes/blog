@@ -4,23 +4,33 @@ permalink: /tags/
 title: Tags
 ---
 
-<div id="archives">
-    {% assign tags = site.tags | sort %}
-    {% for tag in tags %}
-        <div class="archive-group">
-            {% capture tag_name %}{{ tag | first }}{% endcapture %}
-            <div>
-                {% assign tag_description = site.custom_tag_description[tag_name].description %}
-                <h4 class="tag-head" id="{{ tag_name | slugize }}">
-                    <span class="c-badge c-badge-big c-badge-info" name="{{ tag_name | slugize }}">{{ tag_name }}</span>
-                    {% if tag_description %} | {{ tag_description }} {% endif %}
-                </h4>
-            </div>
-            {% for post in site.tags[tag_name] %}
-                <article class="archive-item c-indented-item">
-                    <h4><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
-                </article>
-            {% endfor %}
-        </div>
-    {% endfor %}
-</div>
+{% assign tags = site.tags | sort %}
+{% assign topics = '' | split: '' %}
+{% assign methodologies = '' | split: '' %}
+{% for tag in tags %}
+    {% assign tag_name = tag | first %}
+    {% comment %}
+        To mutate the name string into an array element,
+        split by an HTML entity we assume isn't present
+        (in this case, the "Unit Separator").
+    {% endcomment %}
+    {% assign tag_element = tag_name | split: '&#x0001F' %}
+    {% assign tag_config_name = tag_name | replace: " ", "_" %}
+    {% if site.custom_methodologies contains tag_config_name %}
+        {% assign methodologies = methodologies | concat: tag_element %}
+    {% else %}
+        {% assign topics = topics | concat: tag_element %}
+    {% endif %}
+{% endfor %}
+
+<p>Categorized by type:</p>
+
+<h2>Topics</h2>
+{% for tag_name in topics %}
+    {% include tag-entry.html tag_name=tag_name %}
+{% endfor %}
+
+<h2>Methodologies</h2>
+{% for tag_name in methodologies %}
+    {% include tag-entry.html tag_name=tag_name %}
+{% endfor %}

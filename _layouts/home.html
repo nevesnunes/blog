@@ -16,7 +16,13 @@ layout: default
             split: '.' %}
         {% assign content = phrases[0] |
             append: '.' |
-            append: phrases[1] |
+            append: phrases[1] %}
+        {% if content.size < 120 %}
+            {% assign content = content |
+                append: '.' |
+                append: phrases[2] %}
+        {% endif %}
+        {% assign content = content | 
             append: '...' %}
         <h2 class="no-anchor">
             {% if post.title %}

@@ -1,6 +1,7 @@
 <script src="{{ '/assets/js/anchor.min.js' | relative_url }}"></script>
+
 <script>
-document.addEventListener('DOMContentLoaded', function(event) {
+var init_anchors = function() {
     anchors.options.icon = '#';
     anchors.options.visible = 'always';
     var selector = 'h1,h2,h3,h4,h5,h6'
@@ -8,5 +9,95 @@ document.addEventListener('DOMContentLoaded', function(event) {
         .map(e => e + ':not(.no-anchor):not(.post-title)')
         .join(',');
     anchors.add(selector);
+}
+
+var init_tags = function() {
+    /*
+    Updated layout:
+    <div class="language-bash highlighter-rouge">
+      <pre style="padding: 0;">
+          <pre class="c-language-tag">...</pre>
+          <pre class="highlight">
+              <code>
+    */
+    document.querySelectorAll('div[class^="language-"]').forEach(e => {
+        var classNames = Array.prototype.slice
+            .call(e.classList)
+            .filter(e => /^language-/.test(e));
+        if (classNames.length != 1 || e.children.length != 1) {
+            return;
+        }
+        var language = classNames[0].replace('language-','').replace(/^(bash|sh)$/i,'shell');
+        if (/^plaintext$/i.test(language)) {
+            return;
+        }
+
+        var preHighlight = e.children[0];
+        if (!/highlight/.test(preHighlight.className)) {
+            return;
+        }
+        e.querySelectorAll('[class^="highlight"]')
+            .forEach(child => child.style.margin = "0");
+
+        var preContainer = document.createElement('pre');
+        preContainer.style.padding = "0";
+
+        var preTag = document.createElement('pre');
+        preTag.className = "c-language-tag";
+        preTag.textContent = language;
+
+        preContainer.append(preTag);
+        e.removeChild(preHighlight);
+        preContainer.append(preHighlight);
+        e.prepend(preContainer);
+    });
+
+    /*
+    Updated layout:
+    <pre style="padding: 0;">
+        <pre class="c-language-tag">...</pre>
+        <pre>
+            <code class="language-bash">
+    */
+    document.querySelectorAll('code[class^="language-"]').forEach(e => {
+        var classNames = Array.prototype.slice
+            .call(e.classList)
+            .filter(e => /^language-/.test(e));
+        if (classNames.length != 1) {
+            return;
+        }
+        var language = classNames[0].replace('language-','').replace(/^(bash|sh)$/i,'shell');
+        if (/^plaintext$/i.test(language)) {
+            return;
+        }
+
+        var preContainer = e.parentElement;
+        if (!/pre/i.test(preContainer.tagName)) {
+            return;
+        }
+        preContainer.style.padding = "0";
+
+        var preHighlight = document.createElement('pre');
+        preHighlight.style.margin = "0";
+
+        var preTag = document.createElement('pre');
+        preTag.className = "c-language-tag";
+        preTag.textContent = language;
+
+        preContainer.removeChild(e);
+        preHighlight.append(e);
+        preContainer.append(preTag);
+        preContainer.append(preHighlight);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function(event) {
+    // Guard against multiple file includes
+    if ((anchors.elements || []).length < 1) {
+        init_anchors();
+    }
+    if (!document.querySelector('[class^="c-language-tag"]')) {
+        init_tags();
+    }
 });
 </script>

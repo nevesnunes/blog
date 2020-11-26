@@ -20,7 +20,7 @@
 }
 
 
-/* 
+/*
  * References:
  * http://colorbrewer2.org
  * https://webaim.org/resources/contrastchecker/
@@ -142,6 +142,16 @@
     margin-left: 30px;
 }
 
+.c-language-tag {
+    background-color: #eee;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    display: inline-block;
+    margin: 0;
+    /* Adapted from: pre */
+    padding: 4px 12px;
+}
+
 .entry-content {
     margin-bottom: 2em;
 }
@@ -178,7 +188,7 @@ table tr td {
 /* Overrides */
 
 .archive-group {
-    /* == p */
+    /* Copied from: p */
     margin-bottom: 15px;
 }
 

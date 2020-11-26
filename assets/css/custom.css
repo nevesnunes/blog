@@ -83,20 +83,33 @@
     margin: 0 auto;
 }
 
+.c-container-center pre {
+    display: block;
+    margin: 0 auto;
+}
+
 @media (min-width: 480px) {
-    .c-container-inline img {
+    .c-container-inline > img,
+    .c-container-inline > pre {
         max-width: 100%;
     }
 }
 
 @media (min-width: 600px) {
-    .c-container-inline img {
+    .c-container-inline > img,
+    .c-container-inline > pre {
         max-width: 45%;
     }
 }
 
 .c-container-inline img {
     display: inline-block;
+}
+
+.c-container-inline pre {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
 }
 
 .c-container-info {

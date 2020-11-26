@@ -342,7 +342,7 @@ The assembly address where the value is set is `0x4d9cc`:
          00 00
 ```
 
-To bypass this anti-debugging check, we want to take the jump before it, which can be done in `gdb`:
+To bypass this anti-debugging check, we want to take the jump before it, which can be done in a debugger:
 
 ```gdb
 b *(0x555555554000 + 0x4d9ca)

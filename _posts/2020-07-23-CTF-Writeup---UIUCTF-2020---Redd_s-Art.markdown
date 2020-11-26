@@ -151,7 +151,7 @@ While `starti` puts us in the dynamic linker loading routine (before `CALL _dl_s
 
 At runtime, the libc function `mprotect` can be called to change the access protections of segments, which are divided in pages. Therefore, we call it with the 4k page-aligned address we want to write to, along with bit mask `7` to set `RWX`:
 
-```
+```gdb
 p (int)mprotect((0x555555554000 + 0x973) - (0x555555554000 + 0x973)%4096, 4096, 7)
 ```
 
@@ -161,7 +161,7 @@ On success, it returns `0`.
 
 Let's jump to it by setting the instruction pointer to it's start address, then breaking before it ends, validating if the deobfuscation worked:
 
-```
+```gdb
 set $rip = (0x555555554000 + 0xa5a)
 b *(0x555555554000 + 0xab8)
 c

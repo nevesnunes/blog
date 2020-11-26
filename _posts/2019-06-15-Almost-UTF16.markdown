@@ -14,12 +14,12 @@ A text file containing some song lyrics ended up having an encoding issue.
 
 Mime type detection was failing:
 
-```
+```sh
 file -ib lyrics.txt
-application/octet-stream; charset=binary
+# application/octet-stream; charset=binary
 ```
 
-Vim tried to open it with `latin1` encoding (shown with `:set fileencoding`):
+`vim` tried to open it with `latin1` encoding (shown with `:set fileencoding`):
 
 ```
 1 ÿþB^@o^@t^@a^@n^@i^@c^@a^@l^@ ^@D^@i^@m^@e^@n^@s^@i^@o^@n^@s^@ ^@^@
@@ -31,7 +31,7 @@ Vim tried to open it with `latin1` encoding (shown with `:set fileencoding`):
 7 ^@-^@ ^@1^@,^@ ^@2^@,^@ ^@3^@,^@ ^@4^@,^@ ^@5^@,^@ ^@6^@,^@ ^@7^@,^@ ^@8^@.^@^@
 ```
 
-The candidate encodings vim tries to apply can be checked with `:set fileencodings`, which lists `ucs-bom,utf-8,latin1`. So it seems vim just applied the last fallback available.
+The candidate encodings `vim` tries to apply can be checked with `:set fileencodings`, which lists `ucs-bom,utf-8,latin1`. So it seems `vim` just applied the last fallback available.
 
 Gedit tried to fallback to the system locale (UTF-8):
 
@@ -50,54 +50,54 @@ Given the order of the bytes in the BOM and the fact it isn't followed by any nu
 
 So what went wrong? Let's try to convert the expected encoding to a simpler encoding, as it would be easier to see where it breaks down due to less encoding artifacts:
 
-```
+```sh
 iconv -f utf16le -t utf8 < lyrics.txt | xxd
-iconv: incomplete character or shift sequence at end of buffer
-00000000: efbb bf42 6f74 616e 6963 616c 2044 696d  ...Botanical Dim
-00000010: 656e 7369 6f6e 7320 e0a8 8000 0a2d 2055  ensions .....- U
-00000020: 6d2c 2070 6963 6b20 6120 636f 6c6f 722e  m, pick a color.
-00000030: e0a8 80e2 b480 e280 80e4 8880 e6b0 80e7  ................
-00000040: 9480 e694 80e2 b880 000a 2d20 422d 4c2d  ..........- B-L-
-00000050: 552d 452e 2050 6963 6b20 6120 6e75 6d62  U-E. Pick a numb
-00000060: 6572 2ee0 a880 e2b4 80e2 8080 e494 80e6  er..............
-00000070: a480 e69c 80e6 a080 e790 80e2 b880 000a  ................
-00000080: 2d20 312c 2032 2c20 332c 2034 2c20 352c  - 1, 2, 3, 4, 5,
-00000090: 2036 2c20 372c 2038 2ee0 a880 e2b4 80e2   6, 7, 8........
-000000a0: 8080 e490 80e7 8880 e694 80e6 8480 e6b4  ................
-000000b0: 80e2 8080 e6a4 80e7 8c80 e280 80e6 9080  ................
-000000c0: e694 80e7 8c80 e790 80e6 a480 e6b8 80e7  ................
-000000d0: a480 e2b8 8000 0ae0 a880 e2b4 80e2 8080  ................
-000000e0: e5a4 80e6 bc80 e794 80e2 8080 e6ac 80e6  ................
-000000f0: b880 e6bc 80e7 9c80 e2b0 80e2 8080 e4a4  ................
-00000100: 80e2 8080 e6a8 80e7 9480 e78c 80e7 9080  ................
+# iconv: incomplete character or shift sequence at end of buffer
+# 00000000: efbb bf42 6f74 616e 6963 616c 2044 696d  ...Botanical Dim
+# 00000010: 656e 7369 6f6e 7320 e0a8 8000 0a2d 2055  ensions .....- U
+# 00000020: 6d2c 2070 6963 6b20 6120 636f 6c6f 722e  m, pick a color.
+# 00000030: e0a8 80e2 b480 e280 80e4 8880 e6b0 80e7  ................
+# 00000040: 9480 e694 80e2 b880 000a 2d20 422d 4c2d  ..........- B-L-
+# 00000050: 552d 452e 2050 6963 6b20 6120 6e75 6d62  U-E. Pick a numb
+# 00000060: 6572 2ee0 a880 e2b4 80e2 8080 e494 80e6  er..............
+# 00000070: a480 e69c 80e6 a080 e790 80e2 b880 000a  ................
+# 00000080: 2d20 312c 2032 2c20 332c 2034 2c20 352c  - 1, 2, 3, 4, 5,
+# 00000090: 2036 2c20 372c 2038 2ee0 a880 e2b4 80e2   6, 7, 8........
+# 000000a0: 8080 e490 80e7 8880 e694 80e6 8480 e6b4  ................
+# 000000b0: 80e2 8080 e6a4 80e7 8c80 e280 80e6 9080  ................
+# 000000c0: e694 80e7 8c80 e790 80e6 a480 e6b8 80e7  ................
+# 000000d0: a480 e2b8 8000 0ae0 a880 e2b4 80e2 8080  ................
+# 000000e0: e5a4 80e6 bc80 e794 80e2 8080 e6ac 80e6  ................
+# 000000f0: b880 e6bc 80e7 9c80 e2b0 80e2 8080 e4a4  ................
+# 00000100: 80e2 8080 e6a8 80e7 9480 e78c 80e7 9080  ................
 ```
 
 Comparing with an unconverted hex dump:
 
-```
+```sh
 xxd < lyrics.txt
-00000000: fffe 4200 6f00 7400 6100 6e00 6900 6300  ..B.o.t.a.n.i.c.
-00000010: 6100 6c00 2000 4400 6900 6d00 6500 6e00  a.l. .D.i.m.e.n.
-00000020: 7300 6900 6f00 6e00 7300 2000 000a 0000  s.i.o.n.s. .....
-00000030: 0a00 2d00 2000 5500 6d00 2c00 2000 7000  ..-. .U.m.,. .p.
-00000040: 6900 6300 6b00 2000 6100 2000 6300 6f00  i.c.k. .a. .c.o.
-00000050: 6c00 6f00 7200 2e00 000a 002d 0020 0042  l.o.r......-. .B
-00000060: 006c 0075 0065 002e 0000 0a00 2d00 2000  .l.u.e......-. .
-00000070: 4200 2d00 4c00 2d00 5500 2d00 4500 2e00  B.-.L.-.U.-.E...
-00000080: 2000 5000 6900 6300 6b00 2000 6100 2000   .P.i.c.k. .a. .
-00000090: 6e00 7500 6d00 6200 6500 7200 2e00 000a  n.u.m.b.e.r.....
-000000a0: 002d 0020 0045 0069 0067 0068 0074 002e  .-. .E.i.g.h.t..
-000000b0: 0000 0a00 2d00 2000 3100 2c00 2000 3200  ....-. .1.,. .2.
-000000c0: 2c00 2000 3300 2c00 2000 3400 2c00 2000  ,. .3.,. .4.,. .
-000000d0: 3500 2c00 2000 3600 2c00 2000 3700 2c00  5.,. .6.,. .7.,.
-000000e0: 2000 3800 2e00 000a 002d 0020 0044 0072   .8......-. .D.r
-000000f0: 0065 0061 006d 0020 0069 0073 0020 0064  .e.a.m. .i.s. .d
-00000100: 0065 0073 0074 0069 006e 0079 002e 0000  .e.s.t.i.n.y....
+# 00000000: fffe 4200 6f00 7400 6100 6e00 6900 6300  ..B.o.t.a.n.i.c.
+# 00000010: 6100 6c00 2000 4400 6900 6d00 6500 6e00  a.l. .D.i.m.e.n.
+# 00000020: 7300 6900 6f00 6e00 7300 2000 000a 0000  s.i.o.n.s. .....
+# 00000030: 0a00 2d00 2000 5500 6d00 2c00 2000 7000  ..-. .U.m.,. .p.
+# 00000040: 6900 6300 6b00 2000 6100 2000 6300 6f00  i.c.k. .a. .c.o.
+# 00000050: 6c00 6f00 7200 2e00 000a 002d 0020 0042  l.o.r......-. .B
+# 00000060: 006c 0075 0065 002e 0000 0a00 2d00 2000  .l.u.e......-. .
+# 00000070: 4200 2d00 4c00 2d00 5500 2d00 4500 2e00  B.-.L.-.U.-.E...
+# 00000080: 2000 5000 6900 6300 6b00 2000 6100 2000   .P.i.c.k. .a. .
+# 00000090: 6e00 7500 6d00 6200 6500 7200 2e00 000a  n.u.m.b.e.r.....
+# 000000a0: 002d 0020 0045 0069 0067 0068 0074 002e  .-. .E.i.g.h.t..
+# 000000b0: 0000 0a00 2d00 2000 3100 2c00 2000 3200  ....-. .1.,. .2.
+# 000000c0: 2c00 2000 3300 2c00 2000 3400 2c00 2000  ,. .3.,. .4.,. .
+# 000000d0: 3500 2c00 2000 3600 2c00 2000 3700 2c00  5.,. .6.,. .7.,.
+# 000000e0: 2000 3800 2e00 000a 002d 0020 0044 0072   .8......-. .D.r
+# 000000f0: 0065 0061 006d 0020 0069 0073 0020 0064  .e.a.m. .i.s. .d
+# 00000100: 0065 0073 0074 0069 006e 0079 002e 0000  .e.s.t.i.n.y....
 ```
 
 We should have the text "Dream is destiny" near `000000a0` in the converted text, but instead we get a lot of characters in the non-ASCII range. There are also some missing words near `00000030` and `00000060`, which in the unconverted text are near `00000060` and `000000a0`. A common byte sequence at these positions is `00 0a 00 2d 00`. This is suspicious, since the number of bytes is odd. Before this sequence we find `0a 00` or `2e 00`, both valid bytes, so the starting null byte hints at a missing char before it. `0a` is a line feed (`\r`). Given that Windows encodes newlines as `\r\n`, maybe we just need to add a `\n` before the null byte of the sequence (because in little endian it's `\n\r`):
 
-```bash
+```sh
 # `sed` can't deal with null bytes properly, so any replacement is done
 # in a hex dump and then converted back to hex.
 printf "$(od -t x1 -A n -w1 -v lyrics.txt | \
@@ -108,9 +108,9 @@ printf "$(od -t x1 -A n -w1 -v lyrics.txt | \
 
 Indeed, the file is able to be read correctly:
 
-```
+```sh
 file -ib lyrics-fixed.txt
-text/plain; charset=utf-16le
+# text/plain; charset=utf-16le
 ```
 
 ## A deeper look at mime type detection
@@ -158,13 +158,13 @@ Given that this program is built with [Autotools](https://en.wikipedia.org/wiki/
 <div class="c-list-children">
 - Include debug symbols and ensure predictable breakpoints in our build, with the following script:
 
-```bash
+```sh
 #!/bin/sh
 
 # Builds app with debug symbols.
 #
 # Reference:
-# https://stackoverflow.com/a/4680578/8020917
+# - https://stackoverflow.com/a/4680578/8020917
 
 set -eu
 
@@ -194,15 +194,15 @@ make
 
 - `gdb` isn't aware of `libtool` conventions. There are 2 binaries compiled under `debug/src/.libs`, we want to run the one that links the built library, not the one installed in the system. Comparing the output of `ldd` against these binaries, we want `lt-file`:
 
-```
+```sh
 ldd /usr/bin/file
-    libmagic.so.1 => /lib64/libmagic.so.1 (0x00007f10257a1000)
+#    libmagic.so.1 => /lib64/libmagic.so.1 (0x00007f10257a1000)
 
 ldd debug/src/.libs/file
-    libmagic.so.1 => /lib64/libmagic.so.1 (0x00007f47205d5000)
+#    libmagic.so.1 => /lib64/libmagic.so.1 (0x00007f47205d5000)
 
 ldd debug/src/.libs/lt-file
-    libmagic.so.1 => /home/fn/code/dependencies/file/debug/src/.libs/libmagic.so.1 (0x00007f7cbc82f000)
+#    libmagic.so.1 => /home/fn/code/dependencies/file/debug/src/.libs/libmagic.so.1 (0x00007f7cbc82f000)
 ```
 
 - Debug symbols in shared libraries weren't loaded in gdb by default, so I had to do it manually: `add-symbol-file ./debug/src/.libs/libmagic.so.1.0.0`. We can confirm it is loaded by listing one of the functions under study with `info functions looks_ucs16`;
@@ -211,7 +211,7 @@ ldd debug/src/.libs/lt-file
 </div>
 
 Wrapping it all up:
-```bash
+```sh
 libtool --mode=execute gdb \
     -ex 'add-symbol-file ./debug/src/.libs/libmagic.so.1.0.0' \
     --args ./debug/src/.libs/lt-file -ib -m ./debug/magic/magic.mgc ~/code/wip/lyrics.txt
@@ -261,15 +261,15 @@ Looking at the above parsing done by `file`, it seems that cases of partial succ
 <div class="c-list-children">
 - Provide a percentage of confidence for a given file type, filtered by higher scored types (could be based on total parsed text or statistical analysis of byte histograms). Other heuristics could be explored, such as those from Github's [`linguist`](https://github.com/github/linguist). However, there is a risk of being too optimistic, as shown in the following comparison, which uses the python module [`chardet`](https://pypi.org/project/chardet/):
 
-```
+```sh
 xxd bom-and-junk
-00000000: fffe 000a 0000                           ......
+# 00000000: fffe 000a 0000                           ......
 
 file -ib bom-and-junk
-text/plain; charset=binary
+# text/plain; charset=binary
 
 chardetect bom-and-junk
-bom-and-junk: UTF-16 with confidence 1.0
+# bom-and-junk: UTF-16 with confidence 1.0
 ```
 
 [Another case with the same module](https://stackoverflow.com/a/269276/8020917):

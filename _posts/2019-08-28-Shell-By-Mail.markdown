@@ -27,9 +27,9 @@ The main functionality of this server is routing and delivering mails, which is 
 While iterating on my own `Dockerfile`, I had to do some yak shaving:
 - `apt` seemed to just freeze when run in the container. Neither `/var/log/dpkg.log` or `/var/log/apt/` contained errors.
 - I wanted to see what was going on with `strace`, but the container didn't have it installed. Without `apt` to install it, I decided to make a static build. The project I used only had scripts for ARM, so [I made one for AMD64](https://github.com/andrew-d/static-binaries/pull/28). After copying the binary over to the container and running it:
-```
+```sh
 /opt/strace ls
-/opt/strace: ptrace(PTRACE_TRACEME, ...): Operation not permitted
+# /opt/strace: ptrace(PTRACE_TRACEME, ...): Operation not permitted
 ```
 - It turns out the container needed to run with the corresponding [capability](http://man7.org/linux/man-pages/man7/capabilities.7.html). At first, a reference suggested to [make a seccomp profile with that capability enabled](https://blog.afoolishmanifesto.com/posts/how-to-enable-ptrace-in-docker-1.10/). There was a perl script provided, but my perl installation seemed to be misconfigured, as it couldn't find my installed dependencies:
 ```
@@ -176,7 +176,8 @@ inotify_add_watch(3, "1", IN_MODIFY|IN_CLOSE_WRITE|IN_DELETE_SELF) = 1
 {::options parse_block_html="false" /}
 
 Decoding and evaluating will be done by our script `watch.sh`:
-```
+
+```bash
 #!/bin/sh
 
 set -eux
@@ -210,6 +211,7 @@ trap cleanup EXIT INT QUIT TERM
 ```
 
 Which will be activated like this:
+
 ```bash
 # `entr` exits if file doesn't exist
 touch /var/mail/root

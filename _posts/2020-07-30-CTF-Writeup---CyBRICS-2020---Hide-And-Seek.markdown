@@ -116,7 +116,7 @@ libc.so.6 => /lib64/libc.so.6 (0x00007fdf1af49000)
 /lib64/ld-linux-x86-64.so.2 (0x00007fdf1b3b1000)
 ```
 
-Check system calls with `strace`. To trim out boilerplate, such as dynamic linker initialization, we can compile a simple program in c:
+Check system calls with `strace`. To trim out boilerplate, such as dynamic linker initialization, we can compile a simple program:
 
 ```c
 char *p = "A";
@@ -419,7 +419,7 @@ That syscall enables full protections at the virtual base address:
      prot: 0x7
 ```
 
-We see that it's modifying some memory region by xor-ing it with values from another region. With the following `gdb` script, we are able to break at this point and inspect the values of these locals:
+It's modifying some memory region by xor-ing it with values from another region. We are able to break at this point and inspect the values of these locals:
 
 ```gdb
 b *(0x555555554000 + 0x4d9ca)
@@ -526,7 +526,7 @@ objdump -d hide_and_seek_static_deobfuscated | awk '
     }'
 ```
 
-To follow them with `pwndbg`, we need to remember that there was an `mmap` for region `0x100000000` during the signal handler routine, which isn't applied if we run the new executable, so we also need to include it in our `gdb` script:
+To follow them with `pwndbg`, we need to remember that there was an `mmap` for region `0x100000000` during the signal handler routine, which isn't applied if we run the new executable, so we also need to include it in our script:
 
 ```gdb
 b *(0x555555554000 + 0x640)

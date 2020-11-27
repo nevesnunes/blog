@@ -186,8 +186,6 @@ Using the [Python API](https://sourceware.org/gdb/onlinedocs/gdb/Python-API.html
 Here's a [script]({{ site.url }}{{ site.baseurl }}/assets/writeups/UIUCTF2020/reddsart_deobfuscate_instructions.py) with all these commands put together, that generates a [new executable]({{ site.url }}{{ site.baseurl }}/assets/writeups/UIUCTF2020/ReddsArt_no_delays_deobfuscated) with the deobfuscated block. Run with `gdb -x $script $executable`:
 
 ```python
-#!/usr/bin/env python3
-
 import gdb
 import os
 import stat
@@ -315,8 +313,6 @@ While the `ulong` result is stored on `RBP + local_24` and then used in the xor 
 Wrapping it all up in a `gdb` [script]({{ site.url }}{{ site.baseurl }}/assets/writeups/UIUCTF2020/reddsart_solution.py), which includes the deobfuscation from the previous script:
 
 ```python
-#!/usr/bin/env python3
-
 import gdb
 import os
 import re

@@ -178,10 +178,6 @@ inotify_add_watch(3, "1", IN_MODIFY|IN_CLOSE_WRITE|IN_DELETE_SELF) = 1
 Decoding and evaluating will be done by our script `watch.sh`:
 
 ```bash
-#!/bin/sh
-
-set -eux
-
 # Temporary storage for decoded commands
 tmp_mail_dir=$(mktemp -d)
 tmp_mail_name=$(mktemp --tmpdir="$tmp_mail_dir")
@@ -244,10 +240,6 @@ I settled on using `gpg`: The user cryptographically signs their request with th
 
 The sender can generate their `gpg` key pair with the following script:
 ```bash
-#!/bin/sh
-
-set -eux
-
 . ./request.env
 
 tmp_parameters_file=$(mktemp)

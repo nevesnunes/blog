@@ -72,8 +72,6 @@ tshark \
 Parse contents, decode base64 and dump the decoded data to files:
 
 ```python
-#!/usr/bin/env python3
-
 from ipdb import launch_ipdb_on_exception
 import base64
 import binascii

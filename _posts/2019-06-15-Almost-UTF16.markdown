@@ -159,14 +159,10 @@ Given that this program is built with [Autotools](https://en.wikipedia.org/wiki/
 - Include debug symbols and ensure predictable breakpoints in our build, with the following script:
 
 ```sh
-#!/bin/sh
-
 # Builds app with debug symbols.
 #
 # Reference:
 # - https://stackoverflow.com/a/4680578/8020917
-
-set -eu
 
 if [ -f Makefile ]; then
   make distclean || true

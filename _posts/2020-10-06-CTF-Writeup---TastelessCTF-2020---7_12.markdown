@@ -117,8 +117,6 @@ So now our `NextHeader` is just labelled `Header` and contains two ids, skipping
 Armed with this rudimentary knowledge, the following script was written to extract the PNG data from a 7zip file:
 
 ```python
-#!/usr/bin/env python3
-
 import os, sys
 
 LOG = 'LOG' in os.environ

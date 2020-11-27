@@ -448,13 +448,10 @@ To sum it up, the handler modifies a 4k page starting at the virtual base addres
 We can now take the new code and store as a new executable, to decompile it and so on, but it appears that doing it under a debugger makes the routine end prematurely at address `0x1000`. I decided to not look deeper into it and just take the static approach, since we already know all the addresses involved:
 
 ```python
-#!/usr/bin/env python3
-
 import os
 import stat
 import sys
 import ipdb
-
 
 process_name = os.path.basename(sys.argv[1])
 with open(process_name, "rb") as f:
@@ -693,8 +690,6 @@ Knowing that [AES is a symmetrical cipher](https://en.wikipedia.org/wiki/Advance
 For this step, I just took an educated guess for what a predictable IV would be, which was 16 null bytes (minimal length for the Python Crypto API). Then, considering we had two separate blocks of 16 bytes to compare against our 32 bytes of "real flag" contents, I took another guess that there were 2 encryption steps applied. Therefore, we arrive at this decryption script:
 
 ```python
-#!/usr/bin/env python3
-
 from Crypto.Cipher import AES
 
 # sha1 hash of fake flag

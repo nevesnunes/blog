@@ -7,6 +7,7 @@ tags:
     - cryptography
     - file formats
     - lookup magic
+    - visualization
 ---
 
 What appeared to be a regular zip file could not be successfully extracted. Each extracted file would be empty or contain junk bytes. The file hierarchy could be read, and none of those files were password protected. Could there be some actual corruption in the zip, or was something else going on?

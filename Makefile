@@ -5,21 +5,29 @@ SHELL := /bin/bash
 assets-obj := $(shell find ./assets/ -type f -exec file -i {} \; | \
 	grep -i image | \
 	cut -d':' -f1)
+
+# Since file extensions are not known beforehand,
+# we can't write pattern rules for those cases.
+# In order to only build one file at a time,
+# we generate separate rules for each file.
 assets-timestamp-obj := $(assets-obj:%=timestamps/%.timestamp)
-timestamps/%.timestamp: $(assets-obj)
-	mkdir -p "$(shell dirname $@)" && \
-	ect \
-		-6 \
-		-strip \
-		--allfilters \
-		--mt-deflate=2 \
-		--pal_sort=30 \
-		--strict \
-		$* && \
-	touch $@
+$(foreach \
+    prereq, \
+    $(assets-obj), \
+    $(eval timestamps/$(prereq).timestamp: $(prereq); \
+		mkdir -p "$$(shell dirname $$@)" && \
+		ect \
+			-9 \
+			-strip \
+			--allfilters \
+			--mt-deflate=2 \
+			--pal_sort=30 \
+			--strict $$< && \
+		touch $$@) \
+)
 
 gem_dir := $(shell realpath ~/.gem)/jekyll-local
-gem_bin_dir := $(shell find "$(gem_dir)" -path '*/bin' ! -path '*/gems/*')
+gem_bin_dir := $(shell find "$(gem_dir)" -path '*/bin' ! -path '*/gems/*' | head -n1)
 jekyll-obj := \
 	$(gem_bin_dir)/jekyll \
 	$(gem_bin_dir)/kramdown \

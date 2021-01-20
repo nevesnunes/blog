@@ -72,3 +72,5 @@ custom_methodologies:
     description: Identify a feasible search space and a boolean-based test, then guess an expected value. If <a href="https://en.wikipedia.org/wiki/Data_parallelism#Steps_to_parallelization">data can be divided</a>, performance is improved by multithreading.
   lookup_magic:
     description: Identify file formats by signatures, algorithms by constants...
+  visualization: 
+    description: Apply data visualizations to make certain patterns explicit.

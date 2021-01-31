@@ -12,7 +12,7 @@ Without a good intuition of what packet fields to consider, finding side-channel
 
 Our main focus is to find data points that differ significantly from others, i.e. **outliers**.
 
-I'll describe some approaches for these type of datasets, considering the trade-offs of each approach.
+I'll describe some approaches for these types of datasets, considering the trade-offs of each approach.
 
 # Eyeballing
 
@@ -76,7 +76,7 @@ Here's how Tukey's Fence handles these packet fields (`#` denotes number of clus
 
 Most points were misclassified as outliers.
 
-To understand why, let's calculate expected [morse character frequencies](https://github.com/nevesnunes/env/blob/master/common/code/snippets/encodings/morse_letter_frequency.py), based on english letter frequencies:
+To understand why, let's calculate expected [morse character frequencies](https://github.com/nevesnunes/env/blob/master/common/code/snippets/encodings/morse_letter_frequency.py), based on English letter frequencies:
 
 ```
 {".": 59.30666666666667, "-": 40.67333333333334}

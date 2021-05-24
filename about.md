@@ -37,6 +37,7 @@ From these case studies, we can extract:
 - [Tracking down a segfault in grep](https://blog.loadzero.com/blog/tracking-down-a-segfault-in-grep/)
 - [Debugging an evil Go runtime bug \- marcan\.st](https://marcan.st/2017/12/debugging-an-evil-go-runtime-bug/)
     - [runtime: memory corruption crashes with os/exec on Linux kernel 4\.4 · Issue \#20427 · golang/go · GitHub](https://github.com/golang/go/issues/20427)
+- [Hunting down a non\-determinism\-bug in our Rust Wasm build](https://dev.to/gnunicorn/hunting-down-a-non-determinism-bug-in-our-rust-wasm-build-4fk1)
 - [USB Debugging and Profiling Techniques](https://elinux.org/images/1/17/USB_Debugging_and_Profiling_Techniques.pdf)
 
 #### Yak Shaving

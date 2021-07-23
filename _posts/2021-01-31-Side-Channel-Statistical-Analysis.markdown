@@ -128,7 +128,7 @@ Outliers are correctly identified, since the standard deviation is skewed toward
 
 While we don't have any winner approach here, it is nice to go through both of them, as they evidence distinct features about these datasets. Given this conclusion, it's hard to say how the sorting could be tweaked to further improve positions.
 
-# Further Work
+# Further work
 
 - DBSCAN could be applied across the whole dataset instead of for each packet field. Given the high-dimensionality (there would be as many dimensions as packet fields), some feature selection would be needed;
 - Matplotlib figure drawing is slow (System: CPU: Intel i5-4200U, RAM: 12GiB DDR3 1600 MT/s), as it takes around 8 minutes to render a pdf with 193 figures, each containing 1287 data points. I'm considering moving the rendering to D3.js.

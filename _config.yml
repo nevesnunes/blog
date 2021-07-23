@@ -32,6 +32,13 @@ kramdown:
   footnote_backlink: '[return]'
 paginate: 20
 
+# > if you don't have header_pages set, minima will iterate over every page on the site seeing if it should add it to the header pages: in my case, it ultimately just picks http://about.md anyway, so the same effect just 100x slower. Since ~every page has a header, you get the O(n^2). Setting header_pages cut my build time down from 64 seconds to 4 seconds, even staying on Jekyll v3.9.
+# - https://twitter.com/trav_downs/status/1409745681481277446
+header_pages:
+  - about.md
+  - search.md
+  - tags.html
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

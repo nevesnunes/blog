@@ -122,7 +122,9 @@ default:
 }
 ```
 
-An alternatively would be to [setup the call in assembly](https://stackoverflow.com/a/61474680/8020917), with all its portability caveats.
+Unfortunately the [\__VA_ARGS__ variadic macro](https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html) is of no use here, since we would still need to explicitly pass the arguments to it.
+
+An alternative would be to [setup the call in assembly](https://stackoverflow.com/a/61474680/8020917), with all its portability caveats.
 
 ### Wrappers for wrappers
 
@@ -142,7 +144,7 @@ mkdir("foo", 0777) = 0
 __open_2(0x7fffded3e73e, 0x30900, 1, 0) = 3
 ```
 
-Let's follow in the debugger. For convenience, I've installed the glibc debuginfo for my Linux distro.
+Why does ltrace report such a specific symbol for opening a file? Is it directly called by rm? Let's follow in the debugger. For convenience, I've installed the glibc debuginfo for my Linux distro.
 
 ```
 pwndbg> catch syscall openat
@@ -184,10 +186,19 @@ We're still in libc startup, let's move forward:
 If we disassemble `savewd_chdir()` and check the instruction before the address in frame 1:
 
 ```
+pwndbg> disass savewd_chdir
+...
 0x0000555555559e72 <+498>:   call   0x555555556710 <__open_2@plt>
 ```
 
-Now we can check `fcntl.h` to find our signature:
+The corresponding symbol table contains the source filename:
+
+```
+pwndbg> python print(gdb.lookup_symbol("__open_2")[0].symtab.fullname())
+/usr/src/debug/glibc-2.33-18.fc34.x86_64/io/open_2.c
+```
+
+Where we can find our signature:
 
 ```
 int __open_2 (const char *file, int oflag)
@@ -261,7 +272,7 @@ Turns out that sometimes we want to fallback to a more informative `strace -k`:
 +  > /usr/bin/rm(_start+0x2d) [0x420d]
 ```
 
-`lstat()` wrapper is called at `main+0x88c`, but to break in the debugger, we want to adjust to the address at the beginning of the call instruction bytes:
+We are calling another `lstat()` wrapper in libc, as seen in the different reported addresses (`0xf080e vs. 0x100dba`). Let's inspect `main+0x88c`, but to break in the debugger, we want to adjust to the address at the beginning of the call instruction bytes:
 
 ```
 # Although 0x88c = 2188, the call is at 2184

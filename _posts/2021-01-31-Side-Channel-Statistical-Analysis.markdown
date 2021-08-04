@@ -36,17 +36,30 @@ These views are ideal if eyeballing does lead you to them. Previously, I've writ
 
 Some **data cleaning** is required before attempting to visualize these values.
 
-Given that some of them are numerical, others categorical or string data, we can map all non-numerical variables to numerical, by assigning each distinct value its own number. Missing values are assigned with an infinite value. Finally, [output as csv](https://github.com/nevesnunes/env/blob/master/common/code/snippets/pcap/packets_to_csv.py).
+Given that some of them are numerical, others categorical or string data, we can map all non-numerical variables to numerical, by assigning each distinct value its own number. Missing values are assigned with an infinite value. Finally, [output as csv](https://github.com/nevesnunes/env/blob/master/common/code/snippets/pcap/packets_to_csv.py):
 
-Given multiple variables, all countable and ordered, we can plot them with [small multiple bar charts](https://github.com/nevesnunes/aggregables/blob/master/captures/matplotlib/multiple_bar.py), sorting figures based on the approaches described below.
+```bash
+tshark -r patience.pcap -T json > patience.json
+./packets_to_csv.py --type float patience.json
+```
+
+Given multiple variables, all countable and ordered, we can plot them with [small multiple bar charts](https://github.com/nevesnunes/aggregables/blob/master/aggregables/captures/matplotlib/multiple_bar.py), sorting figures based on the approaches described below.
 
 ## Tukey's Fences
+
+```bash
+./multiple_bar.py -f patience.json.float.csv --strategy tukey_fences
+```
 
 By calculating **quartiles** from **standard deviation**, a range can be defined to identify outliers: points which aren't contained in that range.
 
 However, this doesn't give a good idea of other groups of values in our dataset. Depending on how points are distributed, most of them could end up being classified as outliers.
 
 ## Clustering
+
+```bash
+./multiple_bar.py -f patience.json.float.csv --strategy clustering
+```
 
 To get a better quantification of "density" between points, we can use **clustering algorithms**, such as DBSCAN.
 

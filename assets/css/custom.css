@@ -215,12 +215,12 @@ table tr td {
 }
 
 .footnotes {
-    border-top: 0.5rem dashed white;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
+    background-color: #ccc;
+    border: 0;
+    border-radius: 0.25rem;
     margin: 1.5rem 0;
-    padding: 1.5rem 0;
+    padding: 12px;
+    padding-top: 28px; /* ~= 12px + 15px from `ol` */
 }
 
 .footnotes li>p {

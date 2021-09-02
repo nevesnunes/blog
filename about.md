@@ -59,6 +59,11 @@ From these case studies, we can extract:
     - The solution I applied was to add a **NAT OUTPUT rule in the firewall of the endpoint host**, causing locally-generated packets to a given IP and port in the VPN network range to be sent to a sub-network IP and port instead. This allowed `A` to communicate with `B`, while setting an address reachable by `C`.
     - I found this challenge interesting due to requiring cross-cutting knowledge in networking, allowing us to continue using our applications in the scenario we needed.
 
+#### More...
+
+- Debugging: [Methodologies](https://github.com/nevesnunes/env/blob/master/common/code/cheats/debug.md#methodologies), [Case Studies](https://github.com/nevesnunes/env/blob/master/common/code/cheats/debug.md#case-studies)
+- Reverse Engineering: [Methodologies](https://github.com/nevesnunes/env/blob/master/common/code/cheats/reversing.md#methodologies), [Case Studies](https://github.com/nevesnunes/env/blob/master/common/code/cheats/reversing.md#case-studies)
+
 ## Source code
 
 Available in a [git repository](https://github.com/nevesnunes/blog/tree/gh-pages). Feel free to [leave a comment](https://github.com/nevesnunes/blog/issues).

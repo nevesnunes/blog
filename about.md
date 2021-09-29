@@ -17,10 +17,11 @@ From these case studies, we can extract:
 
 - [34c3 CTF minbashmaxfun writeup](https://medium.com/@orik_/34c3-ctf-minbashmaxfun-writeup-4470b596df60)
 - [Solving warsaw&\#8217;s Java Crackme 3 &\#8211; ReWolf&\#039;s blog](http://blog.rewolf.pl/blog/?p=856)
-- [crackmes\.one: noverify's GraxCode's Java CrackMe 1 \- nullsecurity\.org/articles](http://www.nullsecurity.org/article/crackmes_one_noverify_graxcode_java_crackme_1)
 - [Reddish \- HackTheBox Writeup \- IppSec](https://www.youtube.com/watch?v=Yp4oxoQIBAM)
 - [Fuzzing Browsers for weird XSS Vectors \- LiveOverflow](https://www.youtube.com/watch?v=yq_P3dzGiK4)
 - [Hacking with Environment Variables](https://www.elttam.com/blog/env/)
+- [Kernel Pwning with eBPF: a Love Story](https://www.graplsecurity.com/post/kernel-pwning-with-ebpf-a-love-story)
+- [Project Zero: Down the Rabbit\-Hole\.\.\.](https://googleprojectzero.blogspot.com/2019/08/down-rabbit-hole.html)
 
 #### Data Analysis
 
@@ -42,9 +43,8 @@ From these case studies, we can extract:
 
 #### Yak Shaving
 
-- [blog_deploy_yak_shave.md](https://gist.github.com/trptcolin/3353806872d367819f0709c4607acbb8)
-- [What's your current yak-shaving depth? \- Lobsters](https://lobste.rs/s/ngswph/what_s_your_current_yak_shaving_depth)
 - [Rabbit Holes: The Secret to Technical Expertise](http://blog.bityard.net/articles/2019/August/rabbit-holes-the-secret-to-technical-expertise.html)
+- [blog_deploy_yak_shave.md](https://gist.github.com/trptcolin/3353806872d367819f0709c4607acbb8)
 - [Everything I googled in a week as a professional software engineer](https://localghost.dev/2019/09/everything-i-googled-in-a-week-as-a-professional-software-engineer/)
 
 #### Development Challenges

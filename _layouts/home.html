@@ -30,6 +30,11 @@ layout: default
             {% endif %}
         </h2>
         {% include post-metadata.html %}
-        <div class="entry-content">{{ content }}</div>
+        <div class="entry-content">
+            {% if post.thumbnail %}
+                <img src="{{ site.url }}{{ site.baseurl }}{{ post.thumbnail }}" class="c-thumbnail" loading="lazy" />
+            {% endif %}
+            {{ content }}
+        </div>
     {% endfor %}
 </div>

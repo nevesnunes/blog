@@ -8,6 +8,7 @@ tags:
     - file formats
     - lookup magic
     - visualization
+thumbnail: "/assets/img/thumbnails/deceitful_zip.png"
 ---
 
 What appeared to be a regular zip file could not be successfully extracted. Each extracted file would be empty or contain junk bytes. The file hierarchy could be read, and none of those files were password protected. Could there be some actual corruption in the zip, or was something else going on?
@@ -159,7 +160,9 @@ However, simply using the password didn't result in a successful extraction.
 
 <span class="c-badge c-badge-info">Hypothesis:</span> Compressed data is an encrypted stream.
 
-[According to the PDFTron docs](https://www.pdftron.com/documentation/web/guides/xod-and-encryption/), AES encryption can be applied to a `xod`. In our application, we can find the call to the mentioned web worker constructor (which is how we found out that PDFTron was being used, in addition to keywords `DecryptWorker.js` `window.forge` `aes`).
+[According to the PDFTron docs](https://www.pdftron.com/documentation/web/guides/xod-and-encryption/), AES encryption can be applied to a `xod` [^1]. In our application, we can find the call to the mentioned web worker constructor (which is how we found out that PDFTron was being used, in addition to keywords `DecryptWorker.js` `window.forge` `aes`).
+
+[^1]: Despite the [zip file format supporting AES encryption](https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT) with compression method 99, these `xod` files do not have such method set.
 
 The SDK is available for download with `npx @pdftron/webviewer-downloader`.
 

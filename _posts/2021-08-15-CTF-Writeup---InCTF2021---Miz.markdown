@@ -7,6 +7,7 @@ tags:
     - reversing
     - debugging
     - visualization
+thumbnail: "/assets/writeups/InCTF2021/zoom2.png"
 ---
 
 {% include custom.html %}

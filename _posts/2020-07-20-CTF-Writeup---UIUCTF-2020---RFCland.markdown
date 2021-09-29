@@ -7,6 +7,7 @@ tags:
     - forensics
     - file formats
     - protocol analysis
+thumbnail: "/assets/img/thumbnails/rfcland.png"
 ---
 
 {% include custom.html %}

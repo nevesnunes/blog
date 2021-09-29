@@ -6,6 +6,7 @@ tags:
     - ctf
     - protocol analysis
     - visualization
+thumbnail: "/assets/img/thumbnails/patience-dbscan.png"
 ---
 
 Without a good intuition of what packet fields to consider, finding side-channel data in packet captures becomes a bit harder. While `wireshark` provides some statistics views to summarize conversations, we may desire to look into other packet details as well.

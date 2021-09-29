@@ -76,8 +76,10 @@ custom_topics:
     description: Virtual machines and containers.
 custom_methodologies:
   bruteforce:
-    description: Identify a feasible search space and a boolean-based test, then guess an expected value. If <a href="https://en.wikipedia.org/wiki/Data_parallelism#Steps_to_parallelization">data can be divided</a>, performance is improved by multithreading.
+    description: Define a feasible search space and a boolean-based test, then guess an expected value. If <a href="https://en.wikipedia.org/wiki/Data_parallelism#Steps_to_parallelization">data can be divided</a>, performance is improved by multithreading.
+  constraint_solving:
+    description: Modelling our problem domain as satisfiable constraints on symbolic variables.
   lookup_magic:
-    description: Identify file formats by signatures, algorithms by constants...
+    description: Identify file formats by signatures, algorithms by constants, containers by file sizes in metadata...
   visualization: 
     description: Apply data visualizations to make certain patterns explicit.

@@ -6,6 +6,7 @@ tags:
     - ctf
     - steganography
     - file formats
+thumbnail: "/assets/img/thumbnails/712.png"
 ---
 
 {% include custom.html %}

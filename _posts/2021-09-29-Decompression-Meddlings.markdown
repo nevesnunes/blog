@@ -24,6 +24,7 @@ Previously, I dissected a [zip file that had its body AES encrypted](https://nev
 - [Part I: Alleviating streams](#part-i-alleviating-streams)
   * [Preparing a stream](#preparing-a-stream)
   * [Peeking at the naughty bits](#peeking-at-the-naughty-bits)
+  * [Meet the symbols](#meet-the-symbols)
   * [How bad can a bit flip be?](#how-bad-can-a-bit-flip-be)
     + [BFINAL=0 but no more blocks in stream](#bfinal0-but-no-more-blocks-in-stream)
     + [BTYPE=3 which is reserved](#btype3-which-is-reserved)
@@ -170,11 +171,42 @@ hex value parsed <----------'
 
 Now we should be able to cover many possible errors, since we can lookup which exact bits to replace.
 
+## Meet the symbols
+
+With DEFLATE, we don't need the full payload to start decompression output, since compressed bytes are read as a stream, and can be decompressed on the fly, one byte at a time. Bits are parsed from one or more bytes until a symbol is decoded.
+
+To understand how the wrong symbol can affect output, we can check in the specification the possible values:
+
+- 0..255: **literal bytes**, from the alphabet of byte values (e.g. `symbol 65` = byte 0x41 = "A");
+- 256: **end-of-block**;
+- 257..285: **lengths for <length, backward distance> pairs** (e.g. `<2, 4>` = copy 2 bytes starting at 4 bytes ago in the output, so if output is "12345678", we would get "56", and any other subsequent distance would be relative to the new output "1234567856").
+    - Always followed by: 0..29: **distances for <length, backward distance> pairs**
+
+[YouFLATE](https://github.com/XlogicX/YouFLATE) allows us to interactively craft streams. Combined with infgen, the relations between these symbols become more evident:
+
+```
+# ./youflate.pl
+
+Current Tokens: A4,1B
+ASCIIHex Data: 7304012700
+Uncompressed data: AAAAAB
+
+# echo "7304012700" | xxd -r -p | infgen -dd
+
+                    +---> bits parsed for each token
+              .-----'-----.
+last        ! 1              +---> BFINAL=1
+fixed       ! 01             +---> BTYPE=2: static huffman tables, so no
+literal 'A  ! 01110001      -.              table entries included in stream
+match 4 1   ! 00000 0000010  +---> symbols
+literal 'B  ! 01110010       |
+end         ! 0000000       -'
+            ! 00 +---> unused bits (byte padding)
+```
+
 ## How bad can a bit flip be?
 
 Before coming up with a solution, let's investigate how decompressors deal with corrupted streams.
-
-With DEFLATE, we don't need the full payload for decompression, since compressed bytes are read as a stream, and can be decompressed on the fly, one byte at a time.
 
 After an attempt at decompression, we can have two types of end result:
 
@@ -1089,3 +1121,4 @@ How about other possibilities?
 - Those who rolled their own implementations can have unique insights on design decisions:
     - [Unspecified edge cases in the DEFLATE standard](https://www.nayuki.io/page/unspecified-edge-cases-in-the-deflate-standard)
     - [DEFLATE Compression Algorithm \| INTEG Process Group](https://jnior.com/deflate-compression-algorithm/)
+

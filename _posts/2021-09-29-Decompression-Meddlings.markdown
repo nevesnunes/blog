@@ -196,7 +196,7 @@ Uncompressed data: AAAAAB
                     +---> bits parsed for each token
               .-----'-----.
 last        ! 1              +---> BFINAL=1
-fixed       ! 01             +---> BTYPE=2: static huffman tables, so no
+fixed       ! 01             +---> BTYPE=1: static huffman tables, so no
 literal 'A  ! 01110001      -.              table entries included in stream
 match 4 1   ! 00000 0000010  +---> symbols
 literal 'B  ! 01110010       |

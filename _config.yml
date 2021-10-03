@@ -79,7 +79,11 @@ custom_methodologies:
     description: Define a feasible search space and a boolean-based test, then guess an expected value. If <a href="https://en.wikipedia.org/wiki/Data_parallelism#Steps_to_parallelization">data can be divided</a>, performance is improved by multithreading.
   constraint_solving:
     description: Modelling our problem domain as satisfiable constraints on symbolic variables.
+  dynamic_instrumentation:
+    description: Modify an executable's behaviour by injecting instructions at runtime.
   lookup_magic:
     description: Identify file formats by signatures, algorithms by constants, containers by file sizes in metadata...
-  visualization: 
+  symbolic_execution:
+    description: Transform executable state into symbolic variables, obtaining concrete values via <a href="#constraint%20solving">constraint solving</a>.
+  visualization:
     description: Apply data visualizations to make certain patterns explicit.

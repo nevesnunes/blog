@@ -189,6 +189,41 @@ Interceptor.attach(ptr(m.base.add(0x31cf)),
 );
 ```
 
+{::options parse_block_html="true" /}
+<div class="c-indirectly-related">
+This alternative happens to work because the instrumentation patches don't introduce instruction misalignments. To verify this:
+
+1. Run without ASLR (e.g. under a shell started with `setarch "$(uname -m)" -R /bin/bash`);
+2. Wait for the debugger at the end of our instrumentation script:
+```javascript
+while (!Process.isDebuggerAttached()) {
+  console.log('Waiting for debugger in PID:', Process.id);
+  Thread.sleep(5);
+}
+```
+3. Attach gdb and dump around the call with `disas (0x555555554000+0x31c1),+30`;
+4. Attach another gdb to the executable without instrumentation and dump around the call;
+5. Compare these two listings, noticing that the call address and one of the following instruction's address (e.g. `lea  rbp,[rsp+0x4]`) happen to have the same offset:
+```diff
+--- gdb -p 1689554  # taken from script log
++++ gdb beginners_rev
+@@ -1,8 +1,9 @@
+ 0x00005555555571c1 <check+81>:       xor    r12d,r12d
+-0x00005555555571c4 <check+84>:       movsx  edi,BYTE PTR [r13+rax*1+0x0]
++0x00005555555571c4 <check+84>:       jmp    0x55555557d008
++0x00005555555571c9 <check+89>:       nop
+ 0x00005555555571ca <check+90>:       call   0x555555555280 <is_correct>
+-0x00005555555571cf <check+95>:       test   eax,eax
+-0x00005555555571d1 <check+97>:       sete   r12b
++0x00005555555571cf <check+95>:       jmp    0x55555557d108
++0x00005555555571d4 <check+100>:      nop
+ 0x00005555555571d5 <check+101>:      test   ebp,ebp
+ 0x00005555555571d7 <check+103>:      je     0x5555555571f8 <check+136>
+ 0x00005555555571d9 <check+105>:      lea    rbp,[rsp+0x4]
+```
+</div>
+{::options parse_block_html="false" /}
+
 The sent message from our instrumentation script is then parsed:
 
 ```python

@@ -294,14 +294,18 @@ To locate the original entry point (i.e. the entry address of the original packe
 import gdb
 import struct
 
+# Before jumping to unpacker
 gdb.execute("b *0x400b7c")
 gdb.execute("r")
+
+# Unpacker has been written at this point, now we can break on it
 gdb.execute("b *0x800a3b")
 
 while True:
     gdb.execute("si")
     rip = int(str(gdb.parse_and_eval("$rip")).split()[0], 16)
     if rip == 0x40093f:
+        # Stepped up to write() call
         break
 ```
 
@@ -474,7 +478,9 @@ project = angr.load_shellcode(
 state = project.factory.entry_state()
 ```
 
-Before executing these instructions, we need to have the actual **program state at this point in execution**, since we are e.g. reading values from registers and stack. Similar to how in software development we make a minimal working test case when we want to isolate logic that causes some bug, here we want to prepare a minimal state so that we can execute the instructions of the flag check like the executable normally would. This would be the same case if we instead wanted to do emulation (e.g. with unicorn).
+Before executing these instructions, we need to have the actual **program state at this point in execution**, since we are e.g. reading values from registers and stack. Similar to how in software development we make a minimal working test case when we want to isolate logic that causes some bug, here we want to prepare a minimal state so that we can execute the instructions of the flag check like the executable normally would[^1].
+
+[^1]: This would be the same case if we instead wanted to do emulation (e.g. with unicorn). Alternatively, a more interactive approach should be possible with [angrgdb](https://github.com/andreafioraldi/angrgdb).
 
 Also, do we have any state resulting from side-effects (e.g. certain bytes read/written from files)? These wouldn't be captured from a debugger. In this case, we don't depend on such side-effects.
 

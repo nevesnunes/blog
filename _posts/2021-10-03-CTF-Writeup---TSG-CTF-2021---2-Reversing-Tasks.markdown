@@ -205,8 +205,8 @@ while (!Process.isDebuggerAttached()) {
 4. Attach another gdb to the executable without instrumentation and dump around the call;
 5. Compare these two listings, noticing that the call address and one of the following instruction's address (e.g. `lea  rbp,[rsp+0x4]`) happen to have the same offset:
 ```diff
---- gdb -p 1689554  # taken from script log
-+++ gdb beginners_rev
+--- gdb beginners_rev
++++ gdb -p 1689554  # PID taken from script log
 @@ -1,8 +1,9 @@
  0x00005555555571c1 <check+81>:       xor    r12d,r12d
 -0x00005555555571c4 <check+84>:       movsx  edi,BYTE PTR [r13+rax*1+0x0]

@@ -32,7 +32,11 @@ layout: default
         {% include post-metadata.html %}
         <div class="entry-content">
             {% if post.thumbnail %}
-                <img src="{{ site.url }}{{ site.baseurl }}{{ post.thumbnail }}" class="c-thumbnail" loading="lazy" />
+                <div class="c-thumbnail-container">
+                    <div class="c-thumbnail-ratio">
+                        <img src="{{ site.url }}{{ site.baseurl }}{{ post.thumbnail }}" class="c-thumbnail" loading="lazy" />
+                    </div>
+                </div>
             {% endif %}
             {{ content }}
         </div>

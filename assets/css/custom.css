@@ -174,13 +174,25 @@
     padding: 4px 12px;
 }
 
-.c-thumbnail {
+.c-thumbnail-container {
     float: left;
     margin-right: 1em;
-    max-width: 5rem;
-    max-height: 5rem;
+}
+
+.c-thumbnail-ratio {
+    background: white;
     border: 0.5rem solid white;
     border-radius: 0.5rem;
+    display: table-cell;
+    height: 5rem;
+    width: 5rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.c-thumbnail {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .entry-content {

@@ -40,6 +40,7 @@ From these case studies, we can extract:
     - [runtime: memory corruption crashes with os/exec on Linux kernel 4\.4 · Issue \#20427 · golang/go · GitHub](https://github.com/golang/go/issues/20427)
 - [Hunting down a non\-determinism\-bug in our Rust Wasm build](https://dev.to/gnunicorn/hunting-down-a-non-determinism-bug-in-our-rust-wasm-build-4fk1)
 - [USB Debugging and Profiling Techniques](https://elinux.org/images/1/17/USB_Debugging_and_Profiling_Techniques.pdf)
+- [The select story \- removal of a compiler optimization](https://aqjune.github.io/posts/2021-10-4.the-select-story.html)
 
 #### Yak Shaving
 

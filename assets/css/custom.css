@@ -200,6 +200,15 @@
     margin-bottom: 2em;
 }
 
+.c-comments {
+    background: white;
+    border: 0;
+    border-radius: 0.25rem;
+    margin-top: 30px;
+    padding: 0.25rem;
+    text-align: center;
+}
+
 table {
     margin: 15px 0;
     padding: 0;

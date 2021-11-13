@@ -327,7 +327,7 @@ Now, how to get the system certificates? One way to find out is to download the 
 sudo dnf debuginfo-install qt5-qtbase
 ```
 
-Then, `grep -rin cacertificate` matches this function declaration:
+Then, `grep -rin cacertificate` matches this function definition:
 
 ```cpp
 /*!

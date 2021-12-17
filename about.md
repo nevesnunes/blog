@@ -26,9 +26,11 @@ From these case studies, we can extract:
 #### Data Analysis
 
 - [24\-core CPU and I can't move my mouse](https://randomascii.wordpress.com/2017/07/09/24-core-cpu-and-i-cant-move-my-mouse/)
+- [Active Benchmarking: bonnie\+\+](https://www.brendangregg.com/ActiveBenchmarking/bonnie++.html)
 - [Analysing Petabytes of Websites](https://tech.marksblogg.com/petabytes-of-website-data-spark-emr.html)
 - [Using FOIA Data and Unix to halve major source of parking tickets](https://mchap.io/using-foia-data-and-unix-to-halve-major-source-of-parking-tickets.html)
 - [Battelle Publishes Open Source Binary Visualization Tool](https://inside.battelle.org/blog-details/battelle-publishes-open-source-binary-visualization-tool)
+- [How to Implement a Simple USB Driver for FreeBSD](https://freebsdfoundation.org/wp-content/uploads/2021/11/Simple_USB_Driver_for_FreeBSD.pdf)
 - [Wireshark visualization TIPS & tricks by Megumi Takeshita \- SharkFest'19](https://sharkfestus.wireshark.org/assets/presentations19/28-37.pdf)
 - [Visualizing Commodore 1541 Disk Contents – Part 2: Errors - pagetable\.com](https://www.pagetable.com/?p=1356)
 

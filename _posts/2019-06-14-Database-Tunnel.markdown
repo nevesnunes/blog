@@ -2,7 +2,9 @@
 layout: post
 title: Database Tunneling
 date: 2019-06-14 00:00:00 +0100
-tags: networking
+tags: 
+    - networking
+    - relays
 ---
 
 In order to run a database client locally, a SSH tunnel was made to a remote host. However, the connection from localhost to the database service was refused, while hosts on the same remote subnet were able to connect.

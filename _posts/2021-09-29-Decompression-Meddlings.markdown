@@ -1073,7 +1073,7 @@ To ensure the added block doesn't affect decompression output:
 ```bash
 diff -au \
     <(python3 -c 'import sys,zlib;print(zlib.decompress(open(sys.argv[1], "rb").read(), -15))' CVE-2011-4925.deflate) \
-    <(python3 -c 'import sys,zlib;print(zlib.decompress(open(sys.argv[1], "rb").read(), -15))' CVE-2011-4925.deflate.engraced) \
+    <(python3 -c 'import sys,zlib;print(zlib.decompress(open(sys.argv[1], "rb").read(), -15))' CVE-2011-4925.deflate.embellished) \
     | wc -c
 # 0 (no bytes are different)
 ```

@@ -1099,6 +1099,10 @@ diff -au <(xxd 000_samples/CVE-2011-4925.deflate) <(xxd 200_hello/CVE-2011-4925.
  [...]
 ```
 
+# Source code
+
+Available in a [git repository](https://github.com/nevesnunes/deflate-frolicking).
+
 # Further work
 
 - Improving the accuracy of reported syntax errors in tree-sitter grammars would lead to better sorting of candidates in bruteforced error repairing. In some cases, the error node can be marked too early in the syntax tree, causing the calculated valid output length to be smaller than expected;

@@ -5,6 +5,7 @@ date: 2021-07-22 18:46:03 +0100
 tags:
     - filesystems
     - linkers
+    - dynamic instrumentation
 ---
 
 {% include custom.html %}

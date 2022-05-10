@@ -5,7 +5,6 @@ date: 2021-10-03 11:26:35 +0100
 tags:
     - ctf
     - reversing
-    - debugging
     - bruteforce
     - dynamic instrumentation
     - symbolic execution

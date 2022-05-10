@@ -3,6 +3,7 @@ layout: post
 title: Almost UTF-16
 date: 2019-06-15 00:00:00 +0100
 tags:
+    - bugfix
     - build tools
     - text encoding
     - file formats

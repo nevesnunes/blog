@@ -5,7 +5,7 @@ date: 2021-08-15 16:51:02 +0100
 tags:
     - ctf
     - reversing
-    - debugging
+    - tracing
     - visualization
 thumbnail: "/assets/writeups/InCTF2021/zoom2.png"
 ---

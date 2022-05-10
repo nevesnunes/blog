@@ -85,5 +85,7 @@ custom_methodologies:
     description: Identify file formats by signatures, algorithms by constants, containers by file sizes in metadata...
   symbolic_execution:
     description: Transform executable state into symbolic variables, obtaining concrete values via <a href="#constraint%20solving">constraint solving</a>.
+  tracing:
+    description: Output internal state created during program execution.
   visualization:
     description: Apply data visualizations to make certain patterns explicit.

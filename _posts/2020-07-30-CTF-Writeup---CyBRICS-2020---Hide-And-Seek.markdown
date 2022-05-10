@@ -2,7 +2,7 @@
 layout: post
 title: CTF Writeup - CyBRICS 2020 - Hide and Seek
 date: 2020-07-30 22:17:06 +0100
-tags: ctf reversing debugging cryptography
+tags: ctf reversing cryptography tracing
 ---
 
 {% include custom.html %}

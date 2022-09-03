@@ -43,6 +43,16 @@ From these case studies, we can extract:
 - [Hunting down a non\-determinism\-bug in our Rust Wasm build](https://dev.to/gnunicorn/hunting-down-a-non-determinism-bug-in-our-rust-wasm-build-4fk1)
 - [USB Debugging and Profiling Techniques](https://elinux.org/images/1/17/USB_Debugging_and_Profiling_Techniques.pdf)
 - [The select story \- removal of a compiler optimization](https://aqjune.github.io/posts/2021-10-4.the-select-story.html)
+- [The hunt for the cluster\-killer Erlang bug \| by Dániel Szoboszlay \| Klarna Engineering](https://engineering.klarna.com/the-hunt-for-the-cluster-killer-erlang-bug-81dd0640aa81?gi=6ba3d3b0c54f)
+
+#### Contraptions Programming
+
+- [Polyglot Assembly \- vojtechkral\.github\.io](https://vojtechkral.github.io/blag/polyglot-assembly/)
+- [Palindromic 64 bit ELF binaries](https://n0.lol/bggp/writeup.html)
+- [mov is Turing-complete](https://drwho.virtadpt.net/files/mov.pdf)
+- [codemix/ts\-sql: A SQL database implemented purely in TypeScript type annotations \- GitHub](https://github.com/codemix/ts-sql)
+- [sed maze solver \- GitHub](https://gist.github.com/xsot/99a8a4304660916455ba2c2c774e623a)
+- [AES in Scratch](https://scratch.mit.edu/projects/555156198/)
 
 #### Yak Shaving
 

@@ -49,7 +49,7 @@ $(lunr-obj):
 dependencies: $(jekyll-obj) $(es5-shim-obj) $(lunr-obj) $(assets-timestamp-obj)
 
 all: dependencies
-	env BUNDLE_GEMFILE=Gemfile.local bundle exec jekyll serve --livereload --config _config.yml,_config.local.yml
+	env BUNDLE_GEMFILE=Gemfile.local bundle exec jekyll serve --config _config.yml,_config.local.yml
 
 .DEFAULT_GOAL := all
 .PHONY: all dependencies

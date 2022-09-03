@@ -69,4 +69,4 @@ From these case studies, we can extract:
 
 ## Source code
 
-Available in a [git repository](https://github.com/nevesnunes/blog/tree/gh-pages). Feel free to [leave a comment](https://github.com/nevesnunes/blog/issues).
+Available in a [git repository](https://github.com/nevesnunes/blog/tree/gh-pages). Feel free to [share any suggestions](https://github.com/nevesnunes/blog/issues).

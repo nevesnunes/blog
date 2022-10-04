@@ -15,6 +15,7 @@ From these case studies, we can extract:
 
 #### Computer Security
 
+- [GoogleCTF 2022 \- eldar \(333 pt / 14 solves\)](https://ctf.harrisongreen.me/2022/googlectf/eldar/)
 - [34c3 CTF minbashmaxfun writeup](https://medium.com/@orik_/34c3-ctf-minbashmaxfun-writeup-4470b596df60)
 - [Solving warsaw&\#8217;s Java Crackme 3 &\#8211; ReWolf&\#039;s blog](http://blog.rewolf.pl/blog/?p=856)
 - [Reddish \- HackTheBox Writeup \- IppSec](https://www.youtube.com/watch?v=Yp4oxoQIBAM)
@@ -47,6 +48,7 @@ From these case studies, we can extract:
 
 #### Contraptions Programming
 
+- [GIF MD5 hashquine \- Rogdham](https://www.rogdham.net/2017/03/12/gif-md5-hashquine.en)
 - [Polyglot Assembly \- vojtechkral\.github\.io](https://vojtechkral.github.io/blag/polyglot-assembly/)
 - [Palindromic 64 bit ELF binaries](https://n0.lol/bggp/writeup.html)
 - [mov is Turing-complete](https://drwho.virtadpt.net/files/mov.pdf)

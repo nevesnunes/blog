@@ -21,6 +21,7 @@ From these case studies, we can extract:
 - [Reddish \- HackTheBox Writeup \- IppSec](https://www.youtube.com/watch?v=Yp4oxoQIBAM)
 - [Fuzzing Browsers for weird XSS Vectors \- LiveOverflow](https://www.youtube.com/watch?v=yq_P3dzGiK4)
 - [Hacking with Environment Variables](https://www.elttam.com/blog/env/)
+- [x86matthew \- Exploiting a Seagate service to create a SYSTEM shell \(CVE\-2022\-40286\)](https://www.x86matthew.com/view_post?id=windows_seagate_lpe)
 - [Kernel Pwning with eBPF: a Love Story](https://www.graplsecurity.com/post/kernel-pwning-with-ebpf-a-love-story)
 - [Project Zero: Down the Rabbit\-Hole\.\.\.](https://googleprojectzero.blogspot.com/2019/08/down-rabbit-hole.html)
 
@@ -34,6 +35,7 @@ From these case studies, we can extract:
 - [How to Implement a Simple USB Driver for FreeBSD](https://freebsdfoundation.org/wp-content/uploads/2021/11/Simple_USB_Driver_for_FreeBSD.pdf)
 - [Wireshark visualization TIPS & tricks by Megumi Takeshita \- SharkFest'19](https://sharkfestus.wireshark.org/assets/presentations19/28-37.pdf)
 - [Visualizing Commodore 1541 Disk Contents – Part 2: Errors - pagetable\.com](https://www.pagetable.com/?p=1356)
+- [Unraveling The JPEG](https://parametric.press/issue-01/unraveling-the-jpeg/)
 
 #### Systems Programming
 

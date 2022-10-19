@@ -53,7 +53,7 @@ From these case studies, we can extract:
 - [GIF MD5 hashquine \- Rogdham](https://www.rogdham.net/2017/03/12/gif-md5-hashquine.en)
 - [Polyglot Assembly \- vojtechkral\.github\.io](https://vojtechkral.github.io/blag/polyglot-assembly/)
 - [Palindromic 64 bit ELF binaries](https://n0.lol/bggp/writeup.html)
-- [mov is Turing-complete](https://drwho.virtadpt.net/files/mov.pdf)
+- [Accidentally Turing\-Complete](https://beza1e1.tuxen.de/articles/accidentally_turing_complete.html)
 - [codemix/ts\-sql: A SQL database implemented purely in TypeScript type annotations \- GitHub](https://github.com/codemix/ts-sql)
 - [sed maze solver \- GitHub](https://gist.github.com/xsot/99a8a4304660916455ba2c2c774e623a)
 - [AES in Scratch](https://scratch.mit.edu/projects/555156198/)

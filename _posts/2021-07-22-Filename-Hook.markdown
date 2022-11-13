@@ -6,6 +6,7 @@ tags:
     - filesystems
     - linkers
     - dynamic instrumentation
+thumbnail: /assets/img/thumbnails/filename_hook.png
 ---
 
 {% include custom.html %}

@@ -80,7 +80,3 @@ From these case studies, we can extract:
 
 - Debugging: [Methodologies](https://github.com/nevesnunes/env/blob/master/common/code/cheats/debug.md#methodologies), [Case Studies](https://github.com/nevesnunes/env/blob/master/common/code/cheats/debug.md#case-studies)
 - Reverse Engineering: [Methodologies](https://github.com/nevesnunes/env/blob/master/common/code/cheats/reversing.md#methodologies), [Case Studies](https://github.com/nevesnunes/env/blob/master/common/code/cheats/reversing.md#case-studies)
-
-## Source code
-
-Available in a [git repository](https://github.com/nevesnunes/blog/tree/gh-pages). Feel free to [share any suggestions](https://github.com/nevesnunes/blog/issues).

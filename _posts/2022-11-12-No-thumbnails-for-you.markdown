@@ -376,6 +376,12 @@ Which gives us this decompilation:
 
 Even without adding symbols, we already see a much larger number of calls in this function than the ones in the source, and we can lookup some of the constants being compared to confirm that `do_open` is inlined.
 
+{::options parse_block_html="true" /}
+<div class="c-aside">
+EDIT: Another less stubborn approach would be to [disable ASLR and use debugging symbols](https://blog.viraptor.info/post/a-process-murder-mystery-a-debugging-story) with gdb's `disassemble/m`.
+</div>
+{::options parse_block_html="false" /}
+
 So, how do we trace an inlined function? We could add probes to its callees, but some of them were also inlined. Maybe bisect using offsets like `kprobe:path_openat+7`, but no luck there:
 
 ```
@@ -498,6 +504,12 @@ Breakpoint 2 at 0xffffffff812d436b: file fs/namei.c, line 3350.
 >>> condition 2 $_streq((char *)nd->name->name, "/tmp/o.png")
 >>> c
 ```
+
+{::options parse_block_html="true" /}
+<div class="c-aside">
+EDIT: These context switches are likely due to [interrupts](https://twitter.com/h0mbre_/status/1591253731898961921), which can be avoided with `handle SIGINT nostop pass`.
+</div>
+{::options parse_block_html="false" /}
 
 Definitely do not `set scheduler-locking step`, unless you like core dumps...
 

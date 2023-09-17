@@ -4,6 +4,7 @@ title: CTF Writeup - 0CTF 2022 - vintage - part1+2
 date: 2022-09-19 21:13:37 +0000
 tags:
     - ctf
+    - emulation
     - reversing
     - tracing
 ---

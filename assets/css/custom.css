@@ -165,7 +165,7 @@
 }
 
 .c-language-tag {
-    background-color: #eee;
+    background-color: #dddde8;
     border-bottom-left-radius: 0;
     border-top-right-radius: 0;
     display: inline-block;
@@ -216,7 +216,7 @@ table {
 }
 
 table tr {
-    border-top: 2px solid #ddd;
+    border-top: 2px solid #dddde8;
     background-color: #e8e8e8;
     margin: 0;
     padding: 0;
@@ -224,14 +224,14 @@ table tr {
 
 table tr th {
     font-weight: bold;
-    border: 0px solid #ddd;
+    border: 0px solid #dddde8;
     text-align: left;
     margin: 0;
     padding: 6px 13px;
 }
 
 table tr td {
-    border: 0px solid #ddd;
+    border: 0px solid #dddde8;
     text-align: left;
     margin: 0;
     padding: 6px 13px;
@@ -247,7 +247,7 @@ table tr td {
 
 .c-aside,
 .footnotes {
-    background-color: #ccc;
+    background-color: #dddde8;
     border: 0;
     border-radius: 0.25rem;
     margin: 1.5rem 0;
@@ -271,7 +271,7 @@ a.footnote:after {
 /* Avoid negative spacing, it can ruin the kerning of some fonts */
 
 blockquote {
-    border-left: 0.5rem solid #ccc;
+    border-left: 0.5rem solid #dddde8;
     letter-spacing: normal;
     padding: 0 1em;
 }
@@ -286,7 +286,7 @@ figcaption {
 }
 
 hr {
-    border-top: 0.5rem dashed white;
+    border-top: 0.35rem dashed white;
     border-bottom: none;
     border-left: none;
     border-right: none;
